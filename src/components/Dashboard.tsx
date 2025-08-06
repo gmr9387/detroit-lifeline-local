@@ -206,10 +206,10 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="gradient-hero relative overflow-hidden">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center relative z-10">
-            <div className="text-primary-foreground flex-1">
+      <div className="gradient-hero relative overflow-hidden min-h-[200px]">
+        <div className="container mx-auto px-4 py-8 relative">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div className="text-primary-foreground flex-1 z-10 relative">
               <h1 className="text-3xl font-bold mb-2">
                 Welcome back! 
               </h1>
@@ -217,17 +217,30 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                 {userProfile.neighborhood && `${userProfile.neighborhood}, `}Detroit • Household of {userProfile.householdSize}
               </p>
             </div>
-            <div className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 opacity-30">
-              <img 
-                src={spiritOfDetroitImage} 
-                alt="Spirit of Detroit" 
-                className="w-32 h-24 object-cover rounded-lg shadow-lg"
-              />
+            <div className="hidden md:flex items-center justify-end flex-1 relative z-10">
+              <div className="mr-8 opacity-70 flex items-center space-x-4">
+                <img 
+                  src={spiritOfDetroitImage} 
+                  alt="Spirit of Detroit" 
+                  className="w-20 h-16 object-cover rounded-lg shadow-lg border-2 border-white/20"
+                />
+                <div className="text-primary-foreground/80 text-sm">
+                  <div className="font-semibold">Spirit of Detroit</div>
+                  <div className="text-xs">Inspiring Progress</div>
+                </div>
+              </div>
+              <Button 
+                variant="outline" 
+                onClick={onShowOnboarding}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              >
+                Update Profile
+              </Button>
             </div>
             <Button 
               variant="outline" 
               onClick={onShowOnboarding}
-              className="mt-4 md:mt-0 bg-white/10 border-white/20 text-white hover:bg-white/20 relative z-20"
+              className="md:hidden mt-4 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full"
             >
               Update Profile
             </Button>
