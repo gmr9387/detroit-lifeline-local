@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Search, Filter, Star, MapPin, Clock, Users, AlertCircle, CheckCircle, ExternalLink } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import programsData from '@/data/programs.json';
+import spiritOfDetroitImage from '@/assets/spirit-of-detroit.jpg';
 
 interface UserProfile {
   householdSize: number;
@@ -205,10 +206,10 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="gradient-hero">
+      <div className="gradient-hero relative overflow-hidden">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div className="text-primary-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center relative z-10">
+            <div className="text-primary-foreground flex-1">
               <h1 className="text-3xl font-bold mb-2">
                 Welcome back! 
               </h1>
@@ -216,10 +217,17 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                 {userProfile.neighborhood && `${userProfile.neighborhood}, `}Detroit • Household of {userProfile.householdSize}
               </p>
             </div>
+            <div className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 opacity-30">
+              <img 
+                src={spiritOfDetroitImage} 
+                alt="Spirit of Detroit" 
+                className="w-32 h-24 object-cover rounded-lg shadow-lg"
+              />
+            </div>
             <Button 
               variant="outline" 
               onClick={onShowOnboarding}
-              className="mt-4 md:mt-0 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="mt-4 md:mt-0 bg-white/10 border-white/20 text-white hover:bg-white/20 relative z-20"
             >
               Update Profile
             </Button>
