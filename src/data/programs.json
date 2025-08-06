@@ -1,0 +1,538 @@
+[
+  {
+    "id": "michigan-works",
+    "title": "Michigan Works! Southeast",
+    "category": "employment",
+    "description": "Free job placement services, career coaching, and skills training programs for Detroit area residents.",
+    "benefits": [
+      "Free career coaching and job search assistance",
+      "Skills training and certification programs",
+      "Resume building and interview preparation",
+      "Employer connections and job fairs"
+    ],
+    "eligibility": {
+      "age": "18+",
+      "residency": "Wayne County",
+      "income": "No income requirements",
+      "employment": "Unemployed or underemployed"
+    },
+    "requirements": [
+      "Valid Michigan ID or Driver's License",
+      "Social Security Card",
+      "Proof of eligibility to work in US"
+    ],
+    "contact": {
+      "phone": "(313) 456-0100",
+      "website": "https://michiganworksse.org",
+      "address": "1801 Russell St, Detroit, MI 48207",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Visit any Michigan Works! location or apply online",
+      "Complete assessment and create action plan",
+      "Meet with career coach",
+      "Access training and job search resources"
+    ],
+    "languages": ["English", "Spanish", "Arabic"]
+  },
+  {
+    "id": "snap-benefits",
+    "title": "SNAP Food Assistance",
+    "category": "food",
+    "description": "Monthly food assistance benefits to help low-income families purchase nutritious food.",
+    "benefits": [
+      "Monthly electronic benefits for food purchases",
+      "Average $250/month for family of 4",
+      "Can be used at grocery stores and farmers markets",
+      "Additional benefits for seniors and disabled"
+    ],
+    "eligibility": {
+      "income": "130% of Federal Poverty Level",
+      "assets": "Under $2,500 ($4,250 if 60+ or disabled)",
+      "citizenship": "US citizens and qualified non-citizens"
+    },
+    "requirements": [
+      "Proof of identity",
+      "Proof of income",
+      "Proof of expenses (rent, utilities)",
+      "Social Security numbers for all household members"
+    ],
+    "contact": {
+      "phone": "1-855-275-6424",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/food-assistance",
+      "address": "Multiple MDHHS offices throughout Detroit",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Apply online at Michigan.gov/MiBridges",
+      "Submit required documents",
+      "Complete phone or in-person interview",
+      "Receive benefits within 30 days if approved"
+    ],
+    "languages": ["English", "Spanish", "Arabic"],
+    "deadlines": ["Recertification required every 6-12 months"]
+  },
+  {
+    "id": "childcare-4c",
+    "title": "Child Care Coordinating Council (4C)",
+    "category": "childcare",
+    "description": "Affordable, quality child care assistance for working families in Detroit.",
+    "benefits": [
+      "Subsidized child care costs",
+      "Quality child care provider network",
+      "Before and after school programs",
+      "Support for child care providers"
+    ],
+    "eligibility": {
+      "income": "Up to 200% of Federal Poverty Level",
+      "employment": "Working, in school, or job training",
+      "age": "Children 0-13 years old"
+    },
+    "requirements": [
+      "Proof of income",
+      "Work/school schedule",
+      "Child's birth certificate",
+      "Immunization records"
+    ],
+    "contact": {
+      "phone": "(248) 474-0915",
+      "website": "https://www.4c.org",
+      "address": "29304 Southfield Rd, Southfield, MI 48076",
+      "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Complete application online or in person",
+      "Submit required documentation",
+      "Meet with eligibility specialist",
+      "Select approved child care provider"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  {
+    "id": "detroit-housing-commission",
+    "title": "Detroit Housing Commission",
+    "category": "housing",
+    "description": "Affordable housing opportunities including public housing and Section 8 vouchers for Detroit residents.",
+    "benefits": [
+      "Reduced rent housing units",
+      "Section 8 housing choice vouchers",
+      "Homeownership counseling",
+      "Emergency housing assistance"
+    ],
+    "eligibility": {
+      "income": "Up to 80% of Area Median Income",
+      "residency": "Detroit city limits preferred",
+      "background": "Background check required"
+    },
+    "requirements": [
+      "Proof of income for all household members",
+      "Valid photo ID",
+      "Social Security cards",
+      "Birth certificates for children"
+    ],
+    "contact": {
+      "phone": "(313) 877-8000",
+      "website": "https://www.dhcmi.org",
+      "address": "1301 E Jefferson Ave, Detroit, MI 48207",
+      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+    },
+    "applicationProcess": [
+      "Apply online when waiting list opens",
+      "Submit required documents",
+      "Complete interview process",
+      "Wait for housing assignment"
+    ],
+    "languages": ["English", "Spanish"],
+    "deadlines": ["Applications accepted when waiting list opens (check website)"]
+  },
+  {
+    "id": "erap-rental-assistance",
+    "title": "Emergency Rental Assistance Program (ERAP)",
+    "category": "housing",
+    "description": "Emergency financial assistance for rent, utilities, and other housing costs for eligible Detroit residents.",
+    "benefits": [
+      "Up to 18 months of rental assistance",
+      "Utility payment assistance",
+      "Late fees and court costs covered",
+      "Housing stability services"
+    ],
+    "eligibility": {
+      "income": "At or below 80% of Area Median Income",
+      "covidImpact": "Financial hardship due to COVID-19",
+      "housing": "Risk of homelessness or housing instability"
+    },
+    "requirements": [
+      "Lease agreement or rental documentation",
+      "Proof of income loss or hardship",
+      "Past due rent or utility notices",
+      "Government-issued ID"
+    ],
+    "contact": {
+      "phone": "(313) 400-4470",
+      "website": "https://detroitmi.gov/erap",
+      "address": "Apply online or call for assistance",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Apply online at detroitmi.gov/erap",
+      "Upload required documents",
+      "Landlord must also apply",
+      "Receive decision within 30-60 days"
+    ],
+    "languages": ["English", "Spanish", "Arabic"]
+  },
+  {
+    "id": "wic-program",
+    "title": "WIC Nutrition Program",
+    "category": "food",
+    "description": "Nutrition assistance for pregnant women, new mothers, and children under 5.",
+    "benefits": [
+      "Monthly food packages with healthy foods",
+      "Nutrition education and counseling",
+      "Breastfeeding support",
+      "Referrals to health and social services"
+    ],
+    "eligibility": {
+      "income": "Up to 185% of Federal Poverty Level",
+      "category": "Pregnant/postpartum women, infants, children under 5",
+      "nutrition": "At nutritional risk (determined by screening)"
+    },
+    "requirements": [
+      "Proof of income",
+      "Proof of identity and residency",
+      "Medical documentation if applicable"
+    ],
+    "contact": {
+      "phone": "(313) 876-4000",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/food-assistance/wic",
+      "address": "Multiple WIC clinics throughout Detroit",
+      "hours": "Varies by clinic location"
+    },
+    "applicationProcess": [
+      "Find nearest WIC clinic",
+      "Schedule appointment",
+      "Attend nutrition assessment",
+      "Receive benefits if eligible"
+    ],
+    "languages": ["English", "Spanish", "Arabic"]
+  },
+  {
+    "id": "dte-energy-assistance",
+    "title": "DTE Energy Assistance Program",
+    "category": "utilities",
+    "description": "Energy bill payment assistance and weatherization services for low-income households.",
+    "benefits": [
+      "Help paying energy bills",
+      "Budget billing plans",
+      "Weatherization services",
+      "Energy efficiency upgrades"
+    ],
+    "eligibility": {
+      "income": "At or below 150% of Federal Poverty Level",
+      "service": "DTE Energy customer",
+      "assistance": "Not received assistance in last 12 months"
+    },
+    "requirements": [
+      "DTE Energy bill",
+      "Proof of income",
+      "Government-issued ID",
+      "Social Security numbers"
+    ],
+    "contact": {
+      "phone": "1-800-477-4747",
+      "website": "https://www.dteenergy.com/us/en/residential/billing-payment/financial-assistance",
+      "address": "Apply by phone or online",
+      "hours": "Monday-Friday 7:00 AM - 7:00 PM"
+    },
+    "applicationProcess": [
+      "Call DTE Energy assistance line",
+      "Complete application over phone",
+      "Submit required documents",
+      "Receive assistance if approved"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  {
+    "id": "techtown-entrepreneur",
+    "title": "TechTown Detroit Entrepreneurship",
+    "category": "entrepreneurship",
+    "description": "Business development resources, mentoring, and funding opportunities for Detroit entrepreneurs.",
+    "benefits": [
+      "Business mentoring and coaching",
+      "Access to funding opportunities",
+      "Networking events and workshops",
+      "Office space and resources"
+    ],
+    "eligibility": {
+      "business": "Early-stage business or business idea",
+      "location": "Detroit focus preferred",
+      "commitment": "Willing to participate in programming"
+    },
+    "requirements": [
+      "Business plan or concept",
+      "Application and interview",
+      "Commitment to program participation"
+    ],
+    "contact": {
+      "phone": "(313) 446-4200",
+      "website": "https://techtowndetroit.org",
+      "address": "440 Burroughs St, Detroit, MI 48202",
+      "hours": "Monday-Friday 9:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Submit online application",
+      "Attend information session",
+      "Complete interview process",
+      "Begin programming if accepted"
+    ],
+    "languages": ["English"]
+  },
+  {
+    "id": "motor-city-match",
+    "title": "Motor City Match",
+    "category": "entrepreneurship",
+    "description": "Grants and loans for entrepreneurs looking to start or expand businesses in Detroit.",
+    "benefits": [
+      "Up to $50,000 in grants",
+      "Low-interest loans available",
+      "Business development support",
+      "Real estate assistance"
+    ],
+    "eligibility": {
+      "location": "Business must be in Detroit",
+      "type": "Retail, restaurant, or service business",
+      "stage": "New or expanding business"
+    },
+    "requirements": [
+      "Detailed business plan",
+      "Financial projections",
+      "Site location identified",
+      "Match funding or investment"
+    ],
+    "contact": {
+      "phone": "(313) 566-8250",
+      "website": "https://motorcitymatch.com",
+      "address": "2 Woodward Ave, Detroit, MI 48226",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Submit detailed application online",
+      "Present business plan to review committee",
+      "Complete due diligence process",
+      "Receive funding if approved"
+    ],
+    "languages": ["English"],
+    "deadlines": ["Applications accepted quarterly - check website for dates"]
+  },
+  {
+    "id": "medicaid-enrollment",
+    "title": "Medicaid Health Coverage",
+    "category": "healthcare",
+    "description": "Free or low-cost health insurance for eligible Michigan residents through Healthy Michigan Plan.",
+    "benefits": [
+      "Free or low-cost health insurance",
+      "Doctor visits and preventive care",
+      "Prescription drug coverage",
+      "Mental health and substance abuse services"
+    ],
+    "eligibility": {
+      "income": "Up to 138% of Federal Poverty Level",
+      "citizenship": "US citizens and qualified non-citizens",
+      "residency": "Michigan residents"
+    },
+    "requirements": [
+      "Proof of income",
+      "Proof of citizenship or legal status",
+      "Michigan residency verification",
+      "Social Security number"
+    ],
+    "contact": {
+      "phone": "1-855-789-5610",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/healthcare",
+      "address": "Apply online at Michigan.gov/MiBridges",
+      "hours": "24/7 online application"
+    },
+    "applicationProcess": [
+      "Apply online at Michigan.gov/MiBridges",
+      "Submit required documents",
+      "Receive eligibility determination",
+      "Select health plan if approved"
+    ],
+    "languages": ["English", "Spanish", "Arabic"]
+  },
+  {
+    "id": "detroit-health-dept",
+    "title": "Detroit Health Department Services",
+    "category": "healthcare",
+    "description": "Comprehensive public health services including immunizations, STD testing, and health education.",
+    "benefits": [
+      "Free immunizations",
+      "STD/HIV testing and treatment",
+      "Family planning services",
+      "Health education programs"
+    ],
+    "eligibility": {
+      "residency": "Detroit residents preferred",
+      "insurance": "Services available regardless of insurance status",
+      "income": "Sliding fee scale based on income"
+    },
+    "requirements": [
+      "Valid ID",
+      "Proof of residency preferred",
+      "Insurance card if available"
+    ],
+    "contact": {
+      "phone": "(313) 876-4000",
+      "website": "https://detroitmi.gov/departments/detroit-health-department",
+      "address": "Multiple clinic locations throughout Detroit",
+      "hours": "Varies by clinic and service"
+    },
+    "applicationProcess": [
+      "Call or visit clinic location",
+      "Complete intake form",
+      "Receive services same day in most cases"
+    ],
+    "languages": ["English", "Spanish", "Arabic"]
+  },
+  {
+    "id": "financial-empowerment",
+    "title": "Financial Empowerment Center",
+    "category": "financial",
+    "description": "Free one-on-one financial counseling and coaching to help Detroit residents achieve financial stability.",
+    "benefits": [
+      "Free financial counseling",
+      "Credit report review and improvement",
+      "Debt reduction planning",
+      "Banking and savings assistance"
+    ],
+    "eligibility": {
+      "residency": "Detroit residents",
+      "income": "No income requirements",
+      "age": "18 years or older"
+    },
+    "requirements": [
+      "Valid photo ID",
+      "Proof of Detroit residency",
+      "Financial documents (optional)"
+    ],
+    "contact": {
+      "phone": "(313) 224-2387",
+      "website": "https://detroitmi.gov/departments/civil-rights-inclusion-opportunity-department/financial-empowerment",
+      "address": "2 Woodward Ave, Suite 1304, Detroit, MI 48226",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Call to schedule appointment",
+      "Meet with financial counselor",
+      "Develop personalized action plan",
+      "Receive ongoing support and follow-up"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  {
+    "id": "prosper-us-microfinance",
+    "title": "ProsperUs Detroit Microfinance",
+    "category": "entrepreneurship",
+    "description": "Small business loans and financial services for entrepreneurs who cannot access traditional bank loans.",
+    "benefits": [
+      "Microloans from $500 to $50,000",
+      "Business training and mentoring",
+      "Credit building opportunities",
+      "Financial education workshops"
+    ],
+    "eligibility": {
+      "business": "Existing business or strong business plan",
+      "credit": "Unable to qualify for traditional bank loans",
+      "location": "Detroit area businesses preferred"
+    },
+    "requirements": [
+      "Business plan",
+      "Financial statements",
+      "Personal credit check",
+      "Collateral or guarantor may be required"
+    ],
+    "contact": {
+      "phone": "(313) 580-9888",
+      "website": "https://prosperusdetroit.org",
+      "address": "1505 Woodward Ave, Suite 135, Detroit, MI 48226",
+      "hours": "Monday-Friday 9:00 AM - 5:00 PM"
+    },
+    "applicationProcess": [
+      "Attend orientation session",
+      "Submit loan application",
+      "Complete business training if required",
+      "Receive loan decision"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  {
+    "id": "water-bill-assistance",
+    "title": "Detroit Water and Sewerage Department Assistance",
+    "category": "utilities",
+    "description": "Water bill payment assistance and affordability programs for Detroit residents.",
+    "benefits": [
+      "Reduced water bills based on income",
+      "Payment plans for past due amounts",
+      "Leak repair assistance",
+      "Water conservation kits"
+    ],
+    "eligibility": {
+      "income": "At or below 200% of Federal Poverty Level",
+      "service": "DWSD customer",
+      "residency": "Detroit city limits"
+    },
+    "requirements": [
+      "DWSD water bill",
+      "Proof of income",
+      "Government-issued ID",
+      "Proof of residency"
+    ],
+    "contact": {
+      "phone": "(313) 267-8000",
+      "website": "https://detroitmi.gov/departments/water-and-sewerage-department/customer-care/water-residential-assistance-program-wrap",
+      "address": "735 Randolph St, Detroit, MI 48226",
+      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+    },
+    "applicationProcess": [
+      "Apply online or visit customer service center",
+      "Submit required documents",
+      "Complete income verification",
+      "Receive assistance if approved"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  {
+    "id": "senior-meals",
+    "title": "Senior Nutrition Program",
+    "category": "food",
+    "description": "Nutritious meals and social activities for Detroit residents aged 60 and older.",
+    "benefits": [
+      "Free nutritious meals",
+      "Social activities and programs",
+      "Home-delivered meals for homebound seniors",
+      "Nutrition education"
+    ],
+    "eligibility": {
+      "age": "60 years or older",
+      "residency": "Detroit residents",
+      "income": "No income requirements"
+    },
+    "requirements": [
+      "Valid photo ID",
+      "Proof of age",
+      "Registration at senior center"
+    ],
+    "contact": {
+      "phone": "(313) 224-1700",
+      "website": "https://detroitmi.gov/departments/parks-and-recreation/programs-and-activities/senior-services",
+      "address": "Multiple senior centers throughout Detroit",
+      "hours": "Varies by center location"
+    },
+    "applicationProcess": [
+      "Visit local senior center",
+      "Complete registration",
+      "Begin receiving services immediately"
+    ],
+    "languages": ["English"]
+  }
+]
