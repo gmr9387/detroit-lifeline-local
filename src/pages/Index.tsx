@@ -42,6 +42,9 @@ const Index = () => {
   const [appState, setAppState] = useState<AppState>('onboarding');
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
+  
+  console.log('Current appState:', appState);
+  console.log('UserProfile:', userProfile);
 
   useEffect(() => {
     // Check if user has completed onboarding
