@@ -70,6 +70,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
     isStudent: false
   });
 
+  const [householdSizeInput, setHouseholdSizeInput] = useState(profile.householdSize.toString());
   const progress = ((currentStep + 1) / STEPS.length) * 100;
 
   const handleNext = () => {
@@ -123,13 +124,27 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                 min="1"
                 max="15"
                 step="1"
-                value={profile.householdSize.toString()}
+                value={householdSizeInput}
                 onChange={(e) => {
-                  const value = e.target.value;
-                  setProfile(prev => ({
-                    ...prev,
-                    householdSize: value === '' ? 1 : Math.max(1, Math.min(15, parseInt(value) || 1))
-                  }));
+                  const v = e.target.value;
+                  if (/^\d*$/.test(v)) {
+                    setHouseholdSizeInput(v);
+                    if (v === '') {
+                      setProfile(prev => ({ ...prev, householdSize: 0 }));
+                    } else {
+                      const num = Math.min(15, Math.max(1, parseInt(v, 10)));
+                      setProfile(prev => ({ ...prev, householdSize: num }));
+                    }
+                  }
+                }}
+                onBlur={() => {
+                  if (householdSizeInput === '' || parseInt(householdSizeInput, 10) < 1) {
+                    setHouseholdSizeInput('1');
+                    setProfile(prev => ({ ...prev, householdSize: 1 }));
+                  } else if (parseInt(householdSizeInput, 10) > 15) {
+                    setHouseholdSizeInput('15');
+                    setProfile(prev => ({ ...prev, householdSize: 15 }));
+                  }
                 }}
                 className="mt-3 text-lg"
               />
