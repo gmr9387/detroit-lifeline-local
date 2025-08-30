@@ -26,8 +26,14 @@ import {
   Lock,
   Key,
   Server,
-  Zap
+  Zap,
+  FileText,
+  Layers
 } from 'lucide-react';
+import { ProgramManagement } from './ProgramManagement';
+import { UserAnalytics } from './UserAnalytics';
+import { ContentManagement } from './ContentManagement';
+import { APIIntegrations } from './APIIntegrations';
 import {
   AdminUser,
   AdminProgram,
@@ -135,12 +141,14 @@ export function AdminDashboard({ showFullFeatures = true }: AdminDashboardProps)
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-6">
+        <TabsList className="grid w-full grid-cols-8">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="users">Users</TabsTrigger>
           <TabsTrigger value="programs">Programs</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="integrations">Integrations</TabsTrigger>
+          <TabsTrigger value="content">Content</TabsTrigger>
+          <TabsTrigger value="api">APIs</TabsTrigger>
           <TabsTrigger value="security">Security</TabsTrigger>
         </TabsList>
 
