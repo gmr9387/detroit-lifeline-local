@@ -122,11 +122,15 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
                 type="number"
                 min="1"
                 max="15"
-                value={profile.householdSize}
-                onChange={(e) => setProfile(prev => ({
-                  ...prev,
-                  householdSize: parseInt(e.target.value) || 1
-                }))}
+                step="1"
+                value={profile.householdSize.toString()}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setProfile(prev => ({
+                    ...prev,
+                    householdSize: value === '' ? 1 : Math.max(1, Math.min(15, parseInt(value) || 1))
+                  }));
+                }}
                 className="mt-3 text-lg"
               />
             </div>

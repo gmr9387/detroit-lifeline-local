@@ -6,6 +6,7 @@ import { Search, Filter, Star, MapPin, Clock, Users, AlertCircle, CheckCircle, E
 import { Input } from '@/components/ui/input';
 import programsData from '@/data/programs.json';
 import spiritOfDetroitImage from '@/assets/spirit-of-detroit.jpg';
+import TodoList from './TodoList';
 
 interface UserProfile {
   householdSize: number;
@@ -500,6 +501,11 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
               </p>
             </div>
           )}
+        </section>
+
+        {/* Todo List */}
+        <section className="mt-8">
+          <TodoList />
         </section>
       </div>
     </div>
