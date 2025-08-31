@@ -189,12 +189,27 @@ export interface AdminProgram {
   budget: number;
   maxApplicants?: number;
   currentApplicants: number;
+  applicationsCount: number;
   successRate: number;
   averageProcessingTime: number;
   requirements: string[];
   benefits: string[];
+  eligibility: {
+    income: string;
+    age: string;
+    other: string[];
+  };
+  applicationUrl: string;
+  contact: {
+    phone: string;
+    email: string;
+    address: string;
+  };
   lastModified: string;
+  lastUpdated: string;
   modifiedBy: string;
+  createdBy: string;
+  isActive: boolean;
 }
 
 export interface SystemAnalytics {
@@ -204,6 +219,8 @@ export interface SystemAnalytics {
   totalPrograms: number;
   systemUptime: number;
   averageResponseTime: number;
+  averageProcessingTime: number;
+  overallSuccessRate: number;
   monthlyGrowth: number;
   topPrograms: {
     programId: string;
@@ -228,16 +245,25 @@ export interface SystemAnalytics {
 export interface APIIntegration {
   id: string;
   name: string;
+  description: string;
   type: 'government' | 'payment' | 'notification' | 'analytics' | 'verification';
   status: 'active' | 'inactive' | 'error' | 'pending';
   endpoint: string;
   lastSync?: string;
+  lastChecked?: string;
+  createdAt: string;
   errorCount: number;
   successRate: number;
   responseTime: number;
   apiKey?: string;
   rateLimitRemaining?: number;
   rateLimitReset?: string;
+  uptime: number;
+  requestsToday: number;
+  lastError?: string;
+  isActive: boolean;
+  config: Record<string, any>;
+  rateLimit: number;
 }
 
 export interface SecurityAudit {

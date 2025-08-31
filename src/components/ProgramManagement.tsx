@@ -61,10 +61,15 @@ export function ProgramManagement() {
         address: formData.contactAddress
       },
       status: formData.status,
+      budget: editingProgram?.budget || 0,
+      currentApplicants: editingProgram?.currentApplicants || 0,
       applicationsCount: editingProgram?.applicationsCount || 0,
       successRate: editingProgram?.successRate || 0,
       averageProcessingTime: editingProgram?.averageProcessingTime || 0,
+      requirements: [],
+      lastModified: new Date().toISOString(),
       lastUpdated: new Date().toISOString(),
+      modifiedBy: 'current_admin',
       createdBy: 'current_admin',
       isActive: formData.status === 'active'
     };

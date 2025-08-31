@@ -421,6 +421,10 @@ export const storageUtils = {
     localStorage.setItem(STORAGE_KEYS.ADMIN_PROGRAMS, JSON.stringify(programs));
   },
 
+  saveAdminPrograms: (programs: AdminProgram[]): void => {
+    localStorage.setItem(STORAGE_KEYS.ADMIN_PROGRAMS, JSON.stringify(programs));
+  },
+
   getAdminPrograms: (): AdminProgram[] => {
     const stored = localStorage.getItem(STORAGE_KEYS.ADMIN_PROGRAMS);
     return stored ? JSON.parse(stored) : [];
@@ -481,6 +485,8 @@ export const storageUtils = {
       totalPrograms,
       systemUptime: 99.9,
       averageResponseTime: 150,
+      averageProcessingTime: 21,
+      overallSuccessRate: totalApplications > 0 ? (applications.filter(app => app.status === 'approved').length / totalApplications) * 100 : 0,
       monthlyGrowth: 25,
       topPrograms,
       userEngagement: {
@@ -512,6 +518,10 @@ export const storageUtils = {
       integrations.push(integration);
     }
 
+    localStorage.setItem(STORAGE_KEYS.API_INTEGRATIONS, JSON.stringify(integrations));
+  },
+
+  saveAPIIntegrations: (integrations: APIIntegration[]): void => {
     localStorage.setItem(STORAGE_KEYS.API_INTEGRATIONS, JSON.stringify(integrations));
   },
 

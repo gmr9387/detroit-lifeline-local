@@ -65,15 +65,19 @@ export function APIIntegrations() {
       endpoint: formData.endpoint,
       description: formData.description,
       status: 'active',
+      lastSync: undefined,
       lastChecked: new Date().toISOString(),
-      responseTime: Math.floor(Math.random() * 500) + 100, // Simulated response time
+      createdAt: editingIntegration?.createdAt || new Date().toISOString(),
+      errorCount: editingIntegration?.errorCount || 0,
+      successRate: editingIntegration?.successRate || 100,
+      responseTime: Math.floor(Math.random() * 500) + 100,
+      apiKey: formData.apiKey,
+      rateLimitRemaining: 1000,
+      rateLimitReset: undefined,
       uptime: editingIntegration?.uptime || 99.5,
       requestsToday: editingIntegration?.requestsToday || Math.floor(Math.random() * 1000),
-      rateLimit: formData.rateLimitPerHour,
-      lastError: editingIntegration?.lastError || null,
+      lastError: editingIntegration?.lastError || undefined,
       isActive: formData.isActive,
-      createdAt: editingIntegration?.createdAt || new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
       config: {
         timeout: formData.timeoutMs,
         retries: 3,
@@ -83,11 +87,7 @@ export function APIIntegrations() {
           'Authorization': `Bearer ${formData.apiKey}`
         }
       },
-      healthCheck: {
-        url: `${formData.endpoint}/health`,
-        method: 'GET',
-        expectedStatus: 200
-      }
+      rateLimit: formData.rateLimitPerHour
     };
 
     const updatedIntegrations = editingIntegration
@@ -162,10 +162,10 @@ export function APIIntegrations() {
         i.id === integration.id 
           ? { 
               ...i, 
-              status: success ? 'active' : 'error',
+              status: success ? 'active' as const : 'error' as const,
               lastChecked: new Date().toISOString(),
-              responseTime: success ? Math.floor(Math.random() * 500) + 100 : null,
-              lastError: success ? null : 'Connection timeout'
+              responseTime: success ? Math.floor(Math.random() * 500) + 100 : 0,
+              lastError: success ? undefined : 'Connection timeout'
             }
           : i
       );
