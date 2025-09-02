@@ -59,12 +59,12 @@
     ],
     "contact": {
       "phone": "1-855-275-6424",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/food-assistance",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/medicaid/portalhome/beneficiaries/apply",
       "address": "Multiple MDHHS offices throughout Detroit",
       "hours": "Monday-Friday 8:00 AM - 5:00 PM"
     },
     "applicationProcess": [
-      "Apply online at Michigan.gov/MiBridges",
+      "Apply online at https://newmibridges.michigan.gov/s/isd-landing-page",
       "Submit required documents",
       "Complete phone or in-person interview",
       "Receive benefits within 30 days if approved"
@@ -169,12 +169,12 @@
     ],
     "contact": {
       "phone": "(313) 400-4470",
-      "website": "https://detroitmi.gov/erap",
+      "website": "https://detroitmi.gov/departments/housing-and-revitalization-department/eviction-rent-and-utility-payment-help-available",
       "address": "Apply online or call for assistance",
       "hours": "Monday-Friday 8:00 AM - 5:00 PM"
     },
     "applicationProcess": [
-      "Apply online at detroitmi.gov/erap",
+      "Apply online at MSHDA portal or Wayne County program",
       "Upload required documents",
       "Landlord must also apply",
       "Receive decision within 30-60 days"
@@ -348,12 +348,12 @@
     ],
     "contact": {
       "phone": "1-855-789-5610",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/healthcare",
-      "address": "Apply online at Michigan.gov/MiBridges",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/medicaid/portalhome/beneficiaries/apply",
+      "address": "Apply online at MiBridges",
       "hours": "24/7 online application"
     },
     "applicationProcess": [
-      "Apply online at Michigan.gov/MiBridges",
+      "Apply online at https://newmibridges.michigan.gov/s/isd-landing-page",
       "Submit required documents",
       "Receive eligibility determination",
       "Select health plan if approved"
@@ -534,5 +534,75 @@
       "Begin receiving services immediately"
     ],
     "languages": ["English"]
+  },
+  {
+    "id": "michigan-211",
+    "title": "Michigan 2-1-1 Crisis Helpline",
+    "category": "emergency",
+    "description": "24/7 helpline providing referrals to programs for food, housing, financial assistance, utility help and crisis support.",
+    "benefits": [
+      "24/7 crisis support and referrals",
+      "Help finding local resources",
+      "Emergency assistance connections",
+      "Mental health crisis support"
+    ],
+    "eligibility": {
+      "location": "Michigan residents",
+      "availability": "24/7 service",
+      "language": "Multiple languages available"
+    },
+    "requirements": [
+      "No documentation required",
+      "Simply dial 2-1-1 from any phone"
+    ],
+    "contact": {
+      "phone": "2-1-1",
+      "website": "https://mi211.org/",
+      "address": "Call from anywhere in Michigan",
+      "hours": "24 hours a day, 7 days a week"
+    },
+    "applicationProcess": [
+      "Dial 2-1-1 from any phone",
+      "Speak with trained specialist",
+      "Receive resource referrals",
+      "Get connected to appropriate services"
+    ],
+    "languages": ["English", "Spanish", "Arabic", "Other languages available"]
+  },
+  {
+    "id": "meap-energy-assistance",
+    "title": "Michigan Energy Assistance Program (MEAP)",
+    "category": "utilities",
+    "description": "Statewide program providing assistance with energy bills for low-income households when heating or electric service has been shut off.",
+    "benefits": [
+      "Emergency utility bill payments",
+      "Weatherization assistance",
+      "Energy conservation services",
+      "Crisis intervention for shut-offs"
+    ],
+    "eligibility": {
+      "income": "At or below 150% of Federal Poverty Level",
+      "crisis": "Facing utility shut-off or already shut off",
+      "documentation": "Proof of income and utility bills required"
+    },
+    "requirements": [
+      "Disconnect notice or proof of shut-off",
+      "Proof of income for all household members",
+      "Government-issued ID",
+      "Utility bills and account information"
+    ],
+    "contact": {
+      "phone": "2-1-1",
+      "website": "https://www.michigan.gov/mdhhs/assistance-programs/emergency-relief/heatutilities",
+      "address": "Apply through local agencies statewide",
+      "hours": "Contact 2-1-1 for local agency hours"
+    },
+    "applicationProcess": [
+      "Call 2-1-1 for nearest agency location",
+      "Visit local agency with required documents",
+      "Complete application and eligibility screening",
+      "Receive emergency assistance if approved"
+    ],
+    "languages": ["English", "Spanish"]
   }
 ]
