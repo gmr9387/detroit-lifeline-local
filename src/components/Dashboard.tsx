@@ -212,10 +212,10 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="text-primary-foreground flex-1 z-10 relative">
               <h1 className="text-3xl font-bold mb-2">
-                Welcome back! 
+                Welcome to Lifeline Navigator! 
               </h1>
               <p className="text-primary-foreground/90">
-                {userProfile.neighborhood && `${userProfile.neighborhood}, `}Detroit • Household of {userProfile.householdSize}
+                {userProfile.neighborhood} • Household of {userProfile.householdSize} • Nationwide Coverage
               </p>
             </div>
             <div className="hidden md:flex items-center justify-end flex-1 relative z-10">

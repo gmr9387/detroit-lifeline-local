@@ -1,608 +1,575 @@
 [
   {
-    "id": "michigan-works",
-    "title": "Michigan Works! Southeast",
-    "category": "employment",
-    "description": "Free job placement services, career coaching, and skills training programs for Detroit area residents.",
+    "id": "snap-benefits-federal",
+    "title": "SNAP (Food Stamps) - Federal Program",
+    "category": "Food & Nutrition",
+    "description": "The Supplemental Nutrition Assistance Program helps eligible individuals and families buy groceries and healthy food nationwide.",
     "benefits": [
-      "Free career coaching and job search assistance",
-      "Skills training and certification programs",
-      "Resume building and interview preparation",
-      "Employer connections and job fairs"
+      "Monthly benefits on EBT card ($100-$2,000+ per month)",
+      "Access to fresh produce and healthy foods",
+      "Additional benefits during emergencies",
+      "Available in all 50 states and territories"
     ],
     "eligibility": {
-      "age": "18+",
-      "residency": "Wayne County",
-      "income": "No income requirements",
-      "employment": "Unemployed or underemployed"
+      "income": "Gross income at or below 130% of Federal Poverty Level",
+      "residency": "U.S. resident or qualified non-citizen",
+      "workRequirement": "Able-bodied adults 18-49 must work or participate in training 20+ hours/week"
     },
     "requirements": [
-      "Valid Michigan ID or Driver's License",
-      "Social Security Card",
-      "Proof of eligibility to work in US"
+      "Social Security card or proof of application",
+      "Photo ID",
+      "Proof of income for all household members",
+      "Proof of residence"
     ],
     "contact": {
-      "phone": "(313) 456-0100",
-      "website": "https://www.mwse.org",
-      "address": "1801 Russell St, Detroit, MI 48207",
-      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      "phone": "Call 211 for local SNAP office",
+      "website": "https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program",
+      "address": "Contact your state's SNAP office",
+      "hours": "Varies by state"
     },
     "applicationProcess": [
-      "Visit any Michigan Works! location or apply online",
-      "Complete assessment and create action plan",
-      "Meet with career coach",
-      "Access training and job search resources"
+      "Apply online through your state's portal",
+      "Complete application within 30 days",
+      "Attend interview (phone or in-person)",
+      "Provide required documents"
     ],
-    "languages": ["English", "Spanish", "Arabic"]
+    "languages": ["English", "Spanish", "Multiple languages by state"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["low_income", "food_assistance", "families", "individuals"]
   },
   {
-    "id": "snap-benefits",
-    "title": "SNAP Food Assistance",
-    "category": "food",
-    "description": "Monthly food assistance benefits to help low-income families purchase nutritious food.",
+    "id": "medicaid-nationwide",
+    "title": "Medicaid - National Health Coverage",
+    "category": "Healthcare / Insurance",
+    "description": "Free or low-cost health insurance coverage for eligible individuals and families in all states.",
     "benefits": [
-      "Monthly electronic benefits for food purchases",
-      "Average $250/month for family of 4",
-      "Can be used at grocery stores and farmers markets",
-      "Additional benefits for seniors and disabled"
+      "Free or low-cost health insurance",
+      "Doctor visits and preventive care",
+      "Emergency room coverage",
+      "Prescription drug coverage",
+      "Mental health and substance abuse services",
+      "Pregnancy and childbirth coverage"
     ],
     "eligibility": {
-      "income": "130% of Federal Poverty Level",
-      "assets": "Under $2,500 ($4,250 if 60+ or disabled)",
-      "citizenship": "US citizens and qualified non-citizens"
+      "income": "Up to 138% of Federal Poverty Level (varies by state)",
+      "citizenship": "U.S. citizens and qualified non-citizens",
+      "residency": "Must be a resident of the state where applying"
     },
     "requirements": [
-      "Proof of identity",
       "Proof of income",
-      "Proof of expenses (rent, utilities)",
-      "Social Security numbers for all household members"
+      "Proof of citizenship or legal status",
+      "State residency verification",
+      "Social Security number"
     ],
     "contact": {
-      "phone": "1-855-275-6424",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/medicaid/portalhome/beneficiaries/apply",
-      "address": "Multiple MDHHS offices throughout Detroit",
-      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      "phone": "Call 211 or your state Medicaid office",
+      "website": "https://www.medicaid.gov/",
+      "address": "Apply through your state's Medicaid program",
+      "hours": "24/7 online application in most states"
     },
     "applicationProcess": [
-      "Apply online at https://newmibridges.michigan.gov/s/isd-landing-page",
+      "Apply online through Healthcare.gov or state website",
       "Submit required documents",
-      "Complete phone or in-person interview",
-      "Receive benefits within 30 days if approved"
+      "Receive eligibility determination",
+      "Select health plan if approved"
     ],
-    "languages": ["English", "Spanish", "Arabic"],
-    "deadlines": ["Recertification required every 6-12 months"]
+    "languages": ["English", "Spanish", "Multiple languages by state"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["healthcare", "low_income", "families", "disabled", "seniors"]
   },
   {
-    "id": "childcare-4c",
-    "title": "Child Care Coordinating Council (4C)",
-    "category": "childcare",
-    "description": "Affordable, quality child care assistance for working families in Detroit.",
+    "id": "section-8-housing",
+    "title": "Section 8 Housing Choice Vouchers",
+    "category": "Housing / Rent / Mortgage help",
+    "description": "Federal rental assistance program helping very low-income families afford decent housing nationwide.",
     "benefits": [
-      "Subsidized child care costs",
-      "Quality child care provider network",
-      "Before and after school programs",
-      "Support for child care providers"
+      "Rental assistance paying portion of rent directly to landlord",
+      "Choice in housing location and type",
+      "Homeownership assistance available",
+      "Available in all communities nationwide"
     ],
     "eligibility": {
-      "income": "Up to 200% of Federal Poverty Level",
-      "employment": "Working, in school, or job training",
-      "age": "Children 0-13 years old"
-    },
-    "requirements": [
-      "Proof of income",
-      "Work/school schedule",
-      "Child's birth certificate",
-      "Immunization records"
-    ],
-    "contact": {
-      "phone": "(248) 474-0915",
-      "website": "https://www.4c.org",
-      "address": "29304 Southfield Rd, Southfield, MI 48076",
-      "hours": "Monday-Friday 8:30 AM - 5:00 PM"
-    },
-    "applicationProcess": [
-      "Complete application online or in person",
-      "Submit required documentation",
-      "Meet with eligibility specialist",
-      "Select approved child care provider"
-    ],
-    "languages": ["English", "Spanish"]
-  },
-  {
-    "id": "detroit-housing-commission",
-    "title": "Detroit Housing Commission",
-    "category": "housing",
-    "description": "Affordable housing opportunities including public housing and Section 8 vouchers for Detroit residents.",
-    "benefits": [
-      "Reduced rent housing units",
-      "Section 8 housing choice vouchers",
-      "Homeownership counseling",
-      "Emergency housing assistance"
-    ],
-    "eligibility": {
-      "income": "Up to 80% of Area Median Income",
-      "residency": "Detroit city limits preferred",
-      "background": "Background check required"
+      "income": "Extremely low income (30% of area median) prioritized",
+      "citizenship": "U.S. citizens and qualified non-citizens",
+      "background": "Criminal background check required"
     },
     "requirements": [
       "Proof of income for all household members",
       "Valid photo ID",
-      "Social Security cards",
+      "Social Security cards for all members",
       "Birth certificates for children"
     ],
     "contact": {
-      "phone": "(313) 877-8000",
-      "website": "https://www.dhcmi.org",
-      "address": "1301 E Jefferson Ave, Detroit, MI 48207",
-      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      "phone": "Call 211 for local housing authority",
+      "website": "https://www.hud.gov/topics/housing_choice_voucher_program_section_8",
+      "address": "Contact local Public Housing Authority",
+      "hours": "Varies by local housing authority"
     },
     "applicationProcess": [
-      "Apply online when waiting list opens",
+      "Apply when waiting list opens at local housing authority",
       "Submit required documents",
       "Complete interview process",
-      "Wait for housing assignment"
+      "Search for housing if voucher awarded"
     ],
-    "languages": ["English", "Spanish"],
-    "deadlines": ["Applications accepted when waiting list opens (check website)"]
+    "languages": ["English", "Spanish", "Multiple languages by area"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["housing", "low_income", "families", "disabled", "seniors"],
+    "deadlines": ["Applications accepted when waiting lists open (varies by location)"]
   },
   {
-    "id": "erap-rental-assistance",
-    "title": "Emergency Rental Assistance Program (ERAP)",
-    "category": "housing",
-    "description": "Emergency financial assistance for rent, utilities, and other housing costs for eligible Detroit residents.",
-    "benefits": [
-      "Up to 18 months of rental assistance",
-      "Utility payment assistance",
-      "Late fees and court costs covered",
-      "Housing stability services"
-    ],
-    "eligibility": {
-      "income": "At or below 80% of Area Median Income",
-      "covidImpact": "Financial hardship due to COVID-19",
-      "housing": "Risk of homelessness or housing instability"
-    },
-    "requirements": [
-      "Lease agreement or rental documentation",
-      "Proof of income loss or hardship",
-      "Past due rent or utility notices",
-      "Government-issued ID"
-    ],
-    "contact": {
-      "phone": "(313) 400-4470",
-      "website": "https://detroitmi.gov/departments/housing-and-revitalization-department/eviction-rent-and-utility-payment-help-available",
-      "address": "Apply online or call for assistance",
-      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
-    },
-    "applicationProcess": [
-      "Apply online at MSHDA portal or Wayne County program",
-      "Upload required documents",
-      "Landlord must also apply",
-      "Receive decision within 30-60 days"
-    ],
-    "languages": ["English", "Spanish", "Arabic"]
-  },
-  {
-    "id": "wic-program",
-    "title": "WIC Nutrition Program",
-    "category": "food",
-    "description": "Nutrition assistance for pregnant women, new mothers, and children under 5.",
+    "id": "wic-federal",
+    "title": "WIC Nutrition Program - Federal",
+    "category": "Food & Nutrition",
+    "description": "Nutrition assistance for pregnant women, new mothers, and children under 5 years old nationwide.",
     "benefits": [
       "Monthly food packages with healthy foods",
       "Nutrition education and counseling",
-      "Breastfeeding support",
-      "Referrals to health and social services"
+      "Breastfeeding support and equipment",
+      "Referrals to health and social services",
+      "Farmers market vouchers in many areas"
     ],
     "eligibility": {
-      "income": "Up to 185% of Federal Poverty Level",
+      "income": "At or below 185% of Federal Poverty Level",
       "category": "Pregnant/postpartum women, infants, children under 5",
-      "nutrition": "At nutritional risk (determined by screening)"
+      "nutrition": "At nutritional risk (determined by health screening)"
     },
     "requirements": [
       "Proof of income",
       "Proof of identity and residency",
-      "Medical documentation if applicable"
+      "Medical records for nutritional risk assessment"
     ],
     "contact": {
-      "phone": "(313) 876-4000",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/food-assistance/wic",
-      "address": "Multiple WIC clinics throughout Detroit",
+      "phone": "Call 211 for local WIC office",
+      "website": "https://www.fns.usda.gov/wic",
+      "address": "Multiple WIC clinics in every state",
       "hours": "Varies by clinic location"
     },
     "applicationProcess": [
       "Find nearest WIC clinic",
       "Schedule appointment",
-      "Attend nutrition assessment",
+      "Attend nutrition assessment appointment",
       "Receive benefits if eligible"
     ],
-    "languages": ["English", "Spanish", "Arabic"]
+    "languages": ["English", "Spanish", "Multiple languages by location"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["food_assistance", "families", "children", "pregnant", "low_income"]
   },
   {
-    "id": "dte-energy-assistance",
-    "title": "DTE Energy Assistance Program",
-    "category": "utilities",
-    "description": "Energy bill payment assistance and weatherization services for low-income households.",
+    "id": "liheap-energy-assistance",
+    "title": "LIHEAP Energy Assistance - Federal",
+    "category": "Emergency / Immediate Assistance",
+    "description": "Low Income Home Energy Assistance Program helps with heating and cooling costs nationwide.",
     "benefits": [
       "Help paying energy bills",
-      "Budget billing plans",
-      "Weatherization services",
-      "Energy efficiency upgrades"
+      "Emergency assistance for shut-off prevention",
+      "Weatherization and energy efficiency improvements",
+      "Crisis intervention for energy emergencies"
     ],
     "eligibility": {
-      "income": "At or below 150% of Federal Poverty Level",
-      "service": "DTE Energy customer",
-      "assistance": "Not received assistance in last 12 months"
+      "income": "At or below 150% of Federal Poverty Level (varies by state)",
+      "vulnerability": "Households with elderly, disabled, or children prioritized"
     },
     "requirements": [
-      "DTE Energy bill",
-      "Proof of income",
+      "Recent energy bills",
+      "Proof of income for all household members",
       "Government-issued ID",
       "Social Security numbers"
     ],
     "contact": {
-      "phone": "1-800-477-4747",
-      "website": "https://www.dteenergy.com/us/en/residential/billing-payment/financial-assistance",
-      "address": "Apply by phone or online",
-      "hours": "Monday-Friday 7:00 AM - 7:00 PM"
+      "phone": "Call 211 or state LIHEAP office",
+      "website": "https://www.acf.hhs.gov/ocs/programs/liheap",
+      "address": "Contact your state's LIHEAP administrator",
+      "hours": "Varies by state program"
     },
     "applicationProcess": [
-      "Call DTE Energy assistance line",
-      "Complete application over phone",
-      "Submit required documents",
-      "Receive assistance if approved"
+      "Apply through your state's LIHEAP program",
+      "Submit required documentation",
+      "Wait for approval and assistance",
+      "Assistance paid directly to utility company"
     ],
-    "languages": ["English", "Spanish"]
+    "languages": ["English", "Spanish", "Multiple languages by state"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["utilities", "low_income", "emergency", "seniors", "families"]
   },
   {
-    "id": "techtown-entrepreneur",
-    "title": "TechTown Detroit Entrepreneurship",
-    "category": "entrepreneurship",
-    "description": "Business development resources, mentoring, and funding opportunities for Detroit entrepreneurs.",
+    "id": "sba-loans",
+    "title": "SBA Small Business Loans",
+    "category": "Small Business / Grants / Loans",
+    "description": "Federal small business loans and resources to start, grow, and expand businesses nationwide.",
     "benefits": [
-      "Business mentoring and coaching",
-      "Access to funding opportunities",
-      "Networking events and workshops",
-      "Office space and resources"
+      "Loans up to $5 million with favorable terms",
+      "Lower down payments than traditional loans",
+      "Business counseling and training",
+      "Access to federal contracting opportunities"
     ],
     "eligibility": {
-      "business": "Early-stage business or business idea",
-      "location": "Detroit focus preferred",
-      "commitment": "Willing to participate in programming"
+      "business": "Small business as defined by SBA size standards",
+      "ownership": "At least 51% owned by U.S. citizens",
+      "operations": "Operated for profit"
     },
     "requirements": [
-      "Business plan or concept",
-      "Application and interview",
-      "Commitment to program participation"
+      "Business plan and financial projections",
+      "Personal and business tax returns",
+      "Financial statements",
+      "Good credit history"
     ],
     "contact": {
-      "phone": "(313) 446-4200",
-      "website": "https://techtowndetroit.org",
-      "address": "440 Burroughs St, Detroit, MI 48202",
-      "hours": "Monday-Friday 9:00 AM - 5:00 PM"
+      "phone": "1-800-827-5722",
+      "website": "https://www.sba.gov/funding-programs/loans",
+      "address": "Contact local SBA office or approved lender",
+      "hours": "Monday-Friday business hours"
     },
     "applicationProcess": [
-      "Submit online application",
-      "Attend information session",
-      "Complete interview process",
-      "Begin programming if accepted"
+      "Prepare business plan and financial documents",
+      "Find SBA-approved lender",
+      "Submit loan application",
+      "Complete SBA approval process"
     ],
-    "languages": ["English"]
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "small_business",
+    "eligibilityTags": ["business", "loans", "entrepreneurs", "self_employed"]
   },
   {
-    "id": "motor-city-match",
-    "title": "Motor City Match",
-    "category": "entrepreneurship",
-    "description": "Grants and loans for entrepreneurs looking to start or expand businesses in Detroit.",
+    "id": "earned-income-tax-credit",
+    "title": "Earned Income Tax Credit (EITC)",
+    "category": "Taxes / Credits / Rebates",
+    "description": "Federal tax credit for working people with low to moderate income, especially families with children.",
     "benefits": [
-      "Up to $50,000 in grants",
-      "Low-interest loans available",
-      "Business development support",
-      "Real estate assistance"
+      "Tax credit up to $7,430 for families with 3+ children",
+      "Credit up to $1,502 for workers without children",
+      "Refundable credit - can result in tax refund",
+      "Available even if you don't owe taxes"
     ],
     "eligibility": {
-      "location": "Business must be in Detroit",
-      "type": "Retail, restaurant, or service business",
-      "stage": "New or expanding business"
+      "income": "Varies by filing status and number of children",
+      "work": "Must have earned income from work",
+      "filing": "Must file tax return even if not required"
     },
     "requirements": [
-      "Detailed business plan",
-      "Financial projections",
-      "Site location identified",
-      "Match funding or investment"
+      "Social Security number for you, spouse, and children",
+      "Filing status and income documentation",
+      "Investment income under $11,000"
     ],
     "contact": {
-      "phone": "(313) 566-8250",
-      "website": "https://motorcitymatch.com",
-      "address": "2 Woodward Ave, Detroit, MI 48226",
-      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      "phone": "1-800-829-1040 (IRS)",
+      "website": "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc",
+      "address": "File through IRS or qualified tax preparer",
+      "hours": "Tax season: Monday-Friday 7 AM - 7 PM"
     },
     "applicationProcess": [
-      "Submit detailed application online",
-      "Present business plan to review committee",
-      "Complete due diligence process",
-      "Receive funding if approved"
+      "Gather tax documents and information",
+      "File tax return (Form 1040)",
+      "Claim EITC on tax return",
+      "Receive credit as refund or reduced taxes owed"
     ],
-    "languages": ["English"],
-    "deadlines": ["Applications accepted quarterly - check website for dates"]
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "worker",
+    "eligibilityTags": ["taxes", "families", "working", "children", "low_income"],
+    "deadlines": ["Tax filing deadline (April 15 or extended date)"]
   },
   {
-    "id": "medicaid-enrollment",
-    "title": "Medicaid Health Coverage",
-    "category": "healthcare",
-    "description": "Free or low-cost health insurance for eligible Michigan residents through Healthy Michigan Plan.",
+    "id": "pell-grants",
+    "title": "Federal Pell Grants",
+    "category": "Education / Student Loans",
+    "description": "Federal grants for undergraduate education that don't need to be repaid.",
     "benefits": [
-      "Free or low-cost health insurance",
-      "Doctor visits and preventive care",
-      "Prescription drug coverage",
-      "Mental health and substance abuse services"
+      "Up to $7,395 per year for college expenses",
+      "Does not need to be repaid",
+      "Can be used at eligible colleges nationwide",
+      "Additional aid may be available"
     ],
     "eligibility": {
-      "income": "Up to 138% of Federal Poverty Level",
-      "citizenship": "US citizens and qualified non-citizens",
-      "residency": "Michigan residents"
+      "need": "Exceptional financial need",
+      "education": "Undergraduate students without bachelor's degree",
+      "enrollment": "Enrolled in eligible degree program"
     },
     "requirements": [
-      "Proof of income",
-      "Proof of citizenship or legal status",
-      "Michigan residency verification",
-      "Social Security number"
+      "Complete FAFSA application",
+      "U.S. citizenship or eligible non-citizen",
+      "High school diploma or equivalent",
+      "Maintain satisfactory academic progress"
     ],
     "contact": {
-      "phone": "1-855-789-5610",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/medicaid/portalhome/beneficiaries/apply",
-      "address": "Apply online at MiBridges",
+      "phone": "1-800-433-3243 (Federal Student Aid)",
+      "website": "https://studentaid.gov/understand-aid/types/grants/pell",
+      "address": "Apply online at StudentAid.gov",
       "hours": "24/7 online application"
     },
     "applicationProcess": [
-      "Apply online at https://newmibridges.michigan.gov/s/isd-landing-page",
-      "Submit required documents",
-      "Receive eligibility determination",
-      "Select health plan if approved"
+      "Complete FAFSA online",
+      "Review Student Aid Report (SAR)",
+      "Accept aid offer from college",
+      "Funds sent directly to school"
     ],
-    "languages": ["English", "Spanish", "Arabic"]
+    "languages": ["English", "Spanish"],
+    "audienceTier": "worker",
+    "eligibilityTags": ["education", "students", "grants", "college", "low_income"],
+    "deadlines": ["FAFSA deadline varies by state - apply early for maximum aid"]
   },
   {
-    "id": "detroit-health-dept",
-    "title": "Detroit Health Department Services",
-    "category": "healthcare",
-    "description": "Comprehensive public health services including immunizations, STD testing, and health education.",
+    "id": "unemployment-insurance",
+    "title": "Unemployment Insurance Benefits",
+    "category": "Jobs / Training / Certification",
+    "description": "Temporary financial assistance for workers who lost their job through no fault of their own.",
     "benefits": [
-      "Free immunizations",
-      "STD/HIV testing and treatment",
-      "Family planning services",
-      "Health education programs"
+      "Weekly benefits typically 26-30 weeks",
+      "Amount based on previous earnings",
+      "Job search assistance and training programs",
+      "Health insurance continuation options"
     ],
     "eligibility": {
-      "residency": "Detroit residents preferred",
-      "insurance": "Services available regardless of insurance status",
-      "income": "Sliding fee scale based on income"
+      "employment": "Lost job through no fault of your own",
+      "availability": "Able and available to work",
+      "search": "Actively seeking employment"
     },
     "requirements": [
-      "Valid ID",
-      "Proof of residency preferred",
-      "Insurance card if available"
+      "Work history in covered employment",
+      "File weekly claims",
+      "Register for work search",
+      "Accept suitable work when offered"
     ],
     "contact": {
-      "phone": "(313) 876-4000",
-      "website": "https://detroitmi.gov/departments/detroit-health-department",
-      "address": "Multiple clinic locations throughout Detroit",
-      "hours": "Varies by clinic and service"
+      "phone": "Contact your state unemployment office",
+      "website": "https://www.dol.gov/general/topic/unemployment-insurance",
+      "address": "Apply through your state's unemployment website",
+      "hours": "24/7 online filing in most states"
     },
     "applicationProcess": [
-      "Call or visit clinic location",
-      "Complete intake form",
-      "Receive services same day in most cases"
+      "File claim online or by phone immediately after job loss",
+      "Provide employment and earnings information",
+      "File weekly claims to receive benefits",
+      "Participate in required activities"
     ],
-    "languages": ["English", "Spanish", "Arabic"]
+    "languages": ["English", "Spanish", "Multiple languages by state"],
+    "audienceTier": "worker",
+    "eligibilityTags": ["unemployment", "benefits", "job_search", "workers"]
   },
   {
-    "id": "financial-empowerment",
-    "title": "Financial Empowerment Center",
-    "category": "financial",
-    "description": "Free one-on-one financial counseling and coaching to help Detroit residents achieve financial stability.",
+    "id": "social-security-disability",
+    "title": "Social Security Disability Insurance (SSDI)",
+    "category": "Retirement / Benefits Planning",
+    "description": "Monthly cash benefits for people who can't work due to serious medical conditions.",
     "benefits": [
-      "Free financial counseling",
-      "Credit report review and improvement",
-      "Debt reduction planning",
-      "Banking and savings assistance"
+      "Monthly cash payments",
+      "Medicare coverage after 24 months",
+      "Family member benefits may apply",
+      "Cost of living adjustments"
     ],
     "eligibility": {
-      "residency": "Detroit residents",
-      "income": "No income requirements",
-      "age": "18 years or older"
+      "disability": "Unable to work due to medical condition expected to last 12+ months",
+      "work": "Sufficient work credits from paying Social Security taxes",
+      "medical": "Medical evidence of disability required"
     },
     "requirements": [
-      "Valid photo ID",
-      "Proof of Detroit residency",
-      "Financial documents (optional)"
+      "Medical documentation",
+      "Work history records",
+      "Proof of earnings",
+      "Detailed application"
     ],
     "contact": {
-      "phone": "(313) 224-2387",
-      "website": "https://detroitmi.gov/departments/civil-rights-inclusion-opportunity-department/financial-empowerment",
-      "address": "2 Woodward Ave, Suite 1304, Detroit, MI 48226",
-      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      "phone": "1-800-772-1213",
+      "website": "https://www.ssa.gov/benefits/disability/",
+      "address": "Apply online or at local Social Security office",
+      "hours": "Monday-Friday 8 AM - 7 PM"
     },
     "applicationProcess": [
-      "Call to schedule appointment",
-      "Meet with financial counselor",
-      "Develop personalized action plan",
-      "Receive ongoing support and follow-up"
+      "Gather medical and work records",
+      "Apply online or at Social Security office",
+      "Complete disability determination process",
+      "Receive decision and benefits if approved"
     ],
-    "languages": ["English", "Spanish"]
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["disability", "benefits", "medical", "adults", "families"]
   },
   {
-    "id": "prosper-us-microfinance",
-    "title": "ProsperUs Detroit Microfinance",
-    "category": "entrepreneurship",
-    "description": "Small business loans and financial services for entrepreneurs who cannot access traditional bank loans.",
+    "id": "ccdbg-childcare",
+    "title": "Child Care Development Block Grant",
+    "category": "Childcare & Family Support",
+    "description": "Federal program helping working families pay for child care nationwide.",
     "benefits": [
-      "Microloans from $500 to $50,000",
-      "Business training and mentoring",
-      "Credit building opportunities",
-      "Financial education workshops"
+      "Subsidized child care costs",
+      "Access to quality child care providers",
+      "Before and after school programs",
+      "Support for parents in work or training"
     ],
     "eligibility": {
-      "business": "Existing business or strong business plan",
-      "credit": "Unable to qualify for traditional bank loans",
-      "location": "Detroit area businesses preferred"
+      "income": "Varies by state, typically up to 85% of state median income",
+      "activity": "Working, in school, or job training",
+      "age": "Children typically 12 and under"
     },
     "requirements": [
-      "Business plan",
-      "Financial statements",
-      "Personal credit check",
-      "Collateral or guarantor may be required"
-    ],
-    "contact": {
-      "phone": "(313) 580-9888",
-      "website": "https://prosperusdetroit.org",
-      "address": "1505 Woodward Ave, Suite 135, Detroit, MI 48226",
-      "hours": "Monday-Friday 9:00 AM - 5:00 PM"
-    },
-    "applicationProcess": [
-      "Attend orientation session",
-      "Submit loan application",
-      "Complete business training if required",
-      "Receive loan decision"
-    ],
-    "languages": ["English", "Spanish"]
-  },
-  {
-    "id": "water-bill-assistance",
-    "title": "Detroit Water and Sewerage Department Assistance",
-    "category": "utilities",
-    "description": "Water bill payment assistance and affordability programs for Detroit residents.",
-    "benefits": [
-      "Reduced water bills based on income",
-      "Payment plans for past due amounts",
-      "Leak repair assistance",
-      "Water conservation kits"
-    ],
-    "eligibility": {
-      "income": "At or below 200% of Federal Poverty Level",
-      "service": "DWSD customer",
-      "residency": "Detroit city limits"
-    },
-    "requirements": [
-      "DWSD water bill",
-      "Proof of income",
-      "Government-issued ID",
+      "Proof of income and work/school schedule",
+      "Child's birth certificate",
+      "Immunization records",
       "Proof of residency"
     ],
     "contact": {
-      "phone": "(313) 267-8000",
-      "website": "https://detroitmi.gov/departments/water-and-sewerage-department/customer-care/water-residential-assistance-program-wrap",
-      "address": "735 Randolph St, Detroit, MI 48226",
-      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      "phone": "Call 211 for local child care assistance",
+      "website": "https://www.acf.hhs.gov/occ/programs/ccdf",
+      "address": "Contact your state's child care assistance program",
+      "hours": "Varies by state program"
     },
     "applicationProcess": [
-      "Apply online or visit customer service center",
-      "Submit required documents",
-      "Complete income verification",
-      "Receive assistance if approved"
+      "Apply through your state's child care assistance program",
+      "Submit required documentation",
+      "Meet with eligibility specialist",
+      "Select approved child care provider"
     ],
-    "languages": ["English", "Spanish"]
+    "languages": ["English", "Spanish", "Multiple languages by state"],
+    "audienceTier": "worker",
+    "eligibilityTags": ["childcare", "families", "working", "children", "training"]
   },
   {
-    "id": "senior-meals",
-    "title": "Senior Nutrition Program",
-    "category": "food",
-    "description": "Nutritious meals and social activities for Detroit residents aged 60 and older.",
+    "id": "veterans-benefits",
+    "title": "VA Benefits for Veterans",
+    "category": "Healthcare / Insurance",
+    "description": "Comprehensive benefits for military veterans including healthcare, disability, education, and housing.",
     "benefits": [
-      "Free nutritious meals",
-      "Social activities and programs",
-      "Home-delivered meals for homebound seniors",
-      "Nutrition education"
+      "Healthcare through VA medical centers",
+      "Disability compensation",
+      "Education benefits (GI Bill)",
+      "Home loan guarantees",
+      "Vocational rehabilitation"
     ],
     "eligibility": {
-      "age": "60 years or older",
-      "residency": "Detroit residents",
-      "income": "No income requirements"
+      "service": "Military service in U.S. Armed Forces",
+      "discharge": "Other than dishonorable discharge",
+      "enrollment": "Enrollment in VA healthcare system"
     },
     "requirements": [
-      "Valid photo ID",
-      "Proof of age",
-      "Registration at senior center"
+      "DD-214 or military service records",
+      "Application for benefits",
+      "Medical documentation if applicable"
     ],
     "contact": {
-      "phone": "(313) 224-1700",
-      "website": "https://detroitmi.gov/departments/parks-and-recreation/programs-and-activities/senior-services",
-      "address": "Multiple senior centers throughout Detroit",
-      "hours": "Varies by center location"
+      "phone": "1-800-827-1000",
+      "website": "https://www.va.gov/",
+      "address": "Contact local VA office or medical center",
+      "hours": "24/7 crisis line, business hours for other services"
     },
     "applicationProcess": [
-      "Visit local senior center",
-      "Complete registration",
-      "Begin receiving services immediately"
+      "Apply online at VA.gov or visit VA office",
+      "Submit military service documentation",
+      "Complete medical evaluations if needed",
+      "Receive benefits determination"
     ],
-    "languages": ["English"]
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "specialized",
+    "eligibilityTags": ["veterans", "military", "healthcare", "disability", "education"]
   },
   {
-    "id": "michigan-211",
-    "title": "Michigan 2-1-1 Crisis Helpline",
-    "category": "emergency",
-    "description": "24/7 helpline providing referrals to programs for food, housing, financial assistance, utility help and crisis support.",
+    "id": "supplemental-security-income",
+    "title": "Supplemental Security Income (SSI)",
+    "category": "Emergency / Immediate Assistance",
+    "description": "Monthly cash assistance for disabled individuals and seniors with limited income and resources.",
     "benefits": [
-      "24/7 crisis support and referrals",
-      "Help finding local resources",
-      "Emergency assistance connections",
-      "Mental health crisis support"
+      "Monthly cash payments",
+      "Automatic Medicaid eligibility in most states",
+      "SNAP benefits eligibility",
+      "State supplemental payments in some states"
     ],
     "eligibility": {
-      "location": "Michigan residents",
-      "availability": "24/7 service",
-      "language": "Multiple languages available"
+      "age": "65 or older, blind, or disabled",
+      "income": "Very limited income",
+      "resources": "Limited resources under $2,000 individual/$3,000 couple"
     },
     "requirements": [
-      "No documentation required",
-      "Simply dial 2-1-1 from any phone"
+      "Medical documentation (if disabled)",
+      "Financial records",
+      "Proof of citizenship or legal status",
+      "Social Security number"
     ],
     "contact": {
-      "phone": "2-1-1",
-      "website": "https://mi211.org/",
-      "address": "Call from anywhere in Michigan",
-      "hours": "24 hours a day, 7 days a week"
+      "phone": "1-800-772-1213",
+      "website": "https://www.ssa.gov/benefits/ssi/",
+      "address": "Apply at local Social Security office",
+      "hours": "Monday-Friday 8 AM - 7 PM"
     },
     "applicationProcess": [
-      "Dial 2-1-1 from any phone",
-      "Speak with trained specialist",
-      "Receive resource referrals",
-      "Get connected to appropriate services"
+      "Apply online, by phone, or in person",
+      "Provide required documentation",
+      "Complete interviews and evaluations",
+      "Receive benefits if approved"
     ],
-    "languages": ["English", "Spanish", "Arabic", "Other languages available"]
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "safety_net",
+    "eligibilityTags": ["disability", "seniors", "low_income", "benefits", "emergency"]
   },
   {
-    "id": "meap-energy-assistance",
-    "title": "Michigan Energy Assistance Program (MEAP)",
-    "category": "utilities",
-    "description": "Statewide program providing assistance with energy bills for low-income households when heating or electric service has been shut off.",
+    "id": "rural-development-loans",
+    "title": "USDA Rural Development Loans",
+    "category": "Housing / Rent / Mortgage help",
+    "description": "Home loans and grants for rural areas with no down payment required for eligible borrowers.",
     "benefits": [
-      "Emergency utility bill payments",
-      "Weatherization assistance",
-      "Energy conservation services",
-      "Crisis intervention for shut-offs"
+      "No down payment required",
+      "Below-market interest rates",
+      "No private mortgage insurance",
+      "Flexible credit requirements"
     ],
     "eligibility": {
-      "income": "At or below 150% of Federal Poverty Level",
-      "crisis": "Facing utility shut-off or already shut off",
-      "documentation": "Proof of income and utility bills required"
+      "location": "USDA-designated rural areas",
+      "income": "Income limits based on area median income",
+      "use": "Primary residence only"
     },
     "requirements": [
-      "Disconnect notice or proof of shut-off",
-      "Proof of income for all household members",
-      "Government-issued ID",
-      "Utility bills and account information"
+      "Adequate and dependable income",
+      "Reasonable credit history",
+      "Property must meet USDA standards",
+      "U.S. citizenship or legal residency"
     ],
     "contact": {
-      "phone": "2-1-1",
-      "website": "https://www.michigan.gov/mdhhs/assistance-programs/emergency-relief/heatutilities",
-      "address": "Apply through local agencies statewide",
-      "hours": "Contact 2-1-1 for local agency hours"
+      "phone": "1-800-414-1226",
+      "website": "https://www.rd.usda.gov/programs-services/single-family-housing-programs",
+      "address": "Contact USDA Rural Development office",
+      "hours": "Monday-Friday business hours"
     },
     "applicationProcess": [
-      "Call 2-1-1 for nearest agency location",
-      "Visit local agency with required documents",
-      "Complete application and eligibility screening",
-      "Receive emergency assistance if approved"
+      "Check property eligibility online",
+      "Contact approved USDA lender",
+      "Submit loan application",
+      "Complete approval process"
     ],
-    "languages": ["English", "Spanish"]
+    "languages": ["English", "Spanish"],
+    "audienceTier": "worker",
+    "eligibilityTags": ["housing", "rural", "homeownership", "loans", "no_down_payment"]
+  },
+  {
+    "id": "medicare-benefits",
+    "title": "Medicare Health Insurance",
+    "category": "Healthcare / Insurance",
+    "description": "Federal health insurance program for people 65 and older and certain disabled individuals.",
+    "benefits": [
+      "Hospital insurance (Part A)",
+      "Medical insurance (Part B)",
+      "Prescription drug coverage (Part D)",
+      "Medicare Advantage plans (Part C)"
+    ],
+    "eligibility": {
+      "age": "65 or older",
+      "disability": "Under 65 with certain disabilities",
+      "conditions": "End-stage renal disease or ALS"
+    },
+    "requirements": [
+      "Social Security number",
+      "Proof of citizenship or legal residency",
+      "Work history (for Part A)",
+      "Premium payments (for Parts B and D)"
+    ],
+    "contact": {
+      "phone": "1-800-633-4227",
+      "website": "https://www.medicare.gov/",
+      "address": "Apply online or at Social Security office",
+      "hours": "24/7 online, phone hours vary"
+    },
+    "applicationProcess": [
+      "Enroll during initial enrollment period",
+      "Choose Medicare parts and plans",
+      "Pay required premiums",
+      "Use benefits with approved providers"
+    ],
+    "languages": ["English", "Spanish", "Multiple languages available"],
+    "audienceTier": "specialized",
+    "eligibilityTags": ["seniors", "disabled", "healthcare", "insurance", "medicare"]
   }
 ]

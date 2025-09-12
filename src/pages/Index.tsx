@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import Onboarding from '@/components/Onboarding';
+import FunnelWizard from '@/components/FunnelWizard';
 import Dashboard from '@/components/Dashboard';
 import ProgramDetail from '@/components/ProgramDetail';
 
+interface FunnelResponse {
+  goal: string[];
+  hardship: string;
+  household: string;
+  dependents: number;
+  roles: string[];
+  housing: string;
+  state: string;
+  immediate: string;
+  income: string;
+}
+
+// Legacy interface for backward compatibility
 interface UserProfile {
   householdSize: number;
   householdType: string;
@@ -36,27 +49,70 @@ interface Program {
   deadlines?: string[];
 }
 
-type AppState = 'onboarding' | 'dashboard' | 'program-detail';
+type AppState = 'funnel' | 'dashboard' | 'program-detail';
 
 const Index = () => {
-  const [appState, setAppState] = useState<AppState>('onboarding');
+  const [appState, setAppState] = useState<AppState>('funnel');
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [funnelData, setFunnelData] = useState<FunnelResponse | null>(null);
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   
   console.log('Current appState:', appState);
   console.log('UserProfile:', userProfile);
+  console.log('FunnelData:', funnelData);
 
   useEffect(() => {
-    // Check if user has completed onboarding
+    // Check if user has completed funnel or legacy onboarding
+    const savedFunnel = localStorage.getItem('funnelResponses');
     const savedProfile = localStorage.getItem('userProfile');
-    if (savedProfile) {
+    
+    if (savedFunnel) {
+      const funnelResponses = JSON.parse(savedFunnel);
+      setFunnelData(funnelResponses);
+      setUserProfile(convertFunnelToProfile(funnelResponses));
+      setAppState('dashboard');
+    } else if (savedProfile) {
       setUserProfile(JSON.parse(savedProfile));
       setAppState('dashboard');
     }
   }, []);
 
-  const handleOnboardingComplete = (profile: UserProfile) => {
+  // Convert funnel responses to legacy UserProfile format for compatibility
+  const convertFunnelToProfile = (funnel: FunnelResponse): UserProfile => {
+    const primaryNeeds = funnel.goal.map(goal => {
+      switch (goal) {
+        case 'Housing / Rent / Mortgage help': return 'housing';
+        case 'Food & Nutrition': return 'food';
+        case 'Healthcare / Insurance': return 'healthcare';
+        case 'Childcare & Family Support': return 'childcare';
+        case 'Jobs / Training / Certification': return 'employment';
+        case 'Small Business / Grants / Loans': return 'entrepreneurship';
+        case 'Taxes / Credits / Rebates': return 'financial';
+        case 'Education / Student Loans': return 'education';
+        default: return 'financial';
+      }
+    });
+
+    return {
+      householdSize: funnel.dependents + 1,
+      householdType: funnel.household.toLowerCase().replace(' ', '-'),
+      incomeLevel: funnel.income,
+      zipCode: '', // Will be determined by state
+      neighborhood: funnel.state,
+      primaryNeeds,
+      language: 'english',
+      hasChildren: funnel.household.includes('kids') || funnel.dependents > 0,
+      isVeteran: funnel.roles.includes('Veteran'),
+      hasDisability: funnel.roles.includes('Disabled'),
+      isStudent: funnel.roles.includes('Student')
+    };
+  };
+
+  const handleFunnelComplete = (responses: FunnelResponse) => {
+    setFunnelData(responses);
+    const profile = convertFunnelToProfile(responses);
     setUserProfile(profile);
+    localStorage.setItem('userProfile', JSON.stringify(profile));
     setAppState('dashboard');
   };
 
@@ -70,21 +126,26 @@ const Index = () => {
     setAppState('dashboard');
   };
 
-  const handleShowOnboarding = () => {
-    setAppState('onboarding');
+  const handleShowFunnel = () => {
+    // Clear saved data and restart funnel
+    localStorage.removeItem('funnelResponses');
+    localStorage.removeItem('userProfile');
+    setFunnelData(null);
+    setUserProfile(null);
+    setAppState('funnel');
   };
 
   // App routing based on state
   switch (appState) {
-    case 'onboarding':
-      return <Onboarding onComplete={handleOnboardingComplete} />;
+    case 'funnel':
+      return <FunnelWizard onComplete={handleFunnelComplete} />;
     
     case 'dashboard':
       return userProfile ? (
         <Dashboard 
           userProfile={userProfile}
           onProgramSelect={handleProgramSelect}
-          onShowOnboarding={handleShowOnboarding}
+          onShowOnboarding={handleShowFunnel}
         />
       ) : null;
     
