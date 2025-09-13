@@ -1,7 +1,7 @@
 {
-  "name": "Detroit Social Services",
-  "short_name": "Detroit Services",
-  "description": "Find and apply for social services, benefits, and support programs in Detroit",
+  "name": "Lifeline Navigator",
+  "short_name": "Lifeline",
+  "description": "Find benefits, programs, and support across the United States - browser-native nationwide navigator",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
