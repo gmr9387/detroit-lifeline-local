@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FunnelWizard from '@/components/FunnelWizard';
-import Dashboard from '@/components/Dashboard';
+import { IntegratedDashboard } from '@/components/IntegratedDashboard';
 import ProgramDetail from '@/components/ProgramDetail';
 
 interface FunnelResponse {
@@ -142,7 +142,7 @@ const Index = () => {
     
     case 'dashboard':
       return userProfile ? (
-        <Dashboard 
+        <IntegratedDashboard 
           userProfile={userProfile}
           onProgramSelect={handleProgramSelect}
           onShowFunnel={handleShowFunnel}
