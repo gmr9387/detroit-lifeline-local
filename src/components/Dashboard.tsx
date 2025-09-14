@@ -44,7 +44,7 @@ interface Program {
 interface DashboardProps {
   userProfile: UserProfile;
   onProgramSelect: (program: Program) => void;
-  onShowOnboarding: () => void;
+  onShowFunnel: () => void;
 }
 
 interface Application {
@@ -86,7 +86,7 @@ const QUICK_ACTIONS = [
   }
 ];
 
-const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onShowOnboarding }) => {
+const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onShowFunnel }) => {
   const [programs] = useState<Program[]>(programsData as Program[]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -232,7 +232,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
               </div>
               <Button 
                 variant="outline" 
-                onClick={onShowOnboarding}
+                onClick={onShowFunnel}
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
               >
                 Update Profile
@@ -240,7 +240,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
             </div>
             <Button 
               variant="outline" 
-              onClick={onShowOnboarding}
+              onClick={onShowFunnel}
               className="md:hidden mt-4 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full"
             >
               Update Profile

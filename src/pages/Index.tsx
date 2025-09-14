@@ -145,7 +145,7 @@ const Index = () => {
         <Dashboard 
           userProfile={userProfile}
           onProgramSelect={handleProgramSelect}
-          onShowOnboarding={handleShowFunnel}
+          onShowFunnel={handleShowFunnel}
         />
       ) : null;
     
