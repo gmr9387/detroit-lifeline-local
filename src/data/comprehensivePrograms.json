@@ -1,0 +1,360 @@
+{
+  "statePrograms": {
+    "AL": {
+      "healthcare": [
+        {
+          "id": "al-medicaid",
+          "title": "Alabama Medicaid",
+          "category": "Healthcare",
+          "description": "Healthcare coverage for eligible Alabama residents",
+          "benefits": ["Medical care", "Prescription drugs", "Hospital services"],
+          "eligibility": ["Low income", "Pregnant women", "Children", "Elderly", "Disabled"],
+          "contact": {
+            "phone": "1-855-692-5447",
+            "website": "https://medicaid.alabama.gov"
+          }
+        }
+      ],
+      "workforce": [
+        {
+          "id": "al-workforce",
+          "title": "Alabama Career Center System",
+          "category": "Employment",
+          "description": "Job training and employment services",
+          "benefits": ["Job search assistance", "Skills training", "Career counseling"],
+          "eligibility": ["Job seekers", "Career changers", "Displaced workers"],
+          "contact": {
+            "phone": "1-866-234-5627",
+            "website": "https://labor.alabama.gov"
+          }
+        }
+      ]
+    },
+    "CA": {
+      "healthcare": [
+        {
+          "id": "ca-medi-cal",
+          "title": "Medi-Cal",
+          "category": "Healthcare",
+          "description": "California's Medicaid program providing healthcare to low-income residents",
+          "benefits": ["Medical services", "Dental care", "Mental health services", "Prescription drugs"],
+          "eligibility": ["California residents", "Income at or below 138% FPL"],
+          "contact": {
+            "phone": "1-800-300-1506",
+            "website": "https://www.dhcs.ca.gov"
+          }
+        }
+      ],
+      "workforce": [
+        {
+          "id": "ca-edd",
+          "title": "California Employment Development Department",
+          "category": "Employment",
+          "description": "Unemployment insurance and job training programs",
+          "benefits": ["Unemployment benefits", "Job training", "Disability insurance"],
+          "eligibility": ["California workers", "Job seekers"],
+          "contact": {
+            "phone": "1-800-300-5616",
+            "website": "https://edd.ca.gov"
+          }
+        }
+      ],
+      "housing": [
+        {
+          "id": "ca-housing",
+          "title": "California Housing Assistance",
+          "category": "Housing",
+          "description": "Affordable housing programs for California residents",
+          "benefits": ["Rental assistance", "First-time homebuyer programs", "Housing counseling"],
+          "eligibility": ["Low to moderate income", "California residents"],
+          "contact": {
+            "phone": "1-916-263-2771",
+            "website": "https://hcd.ca.gov"
+          }
+        }
+      ]
+    },
+    "TX": {
+      "healthcare": [
+        {
+          "id": "tx-medicaid",
+          "title": "Texas Medicaid",
+          "category": "Healthcare",
+          "description": "Healthcare coverage for eligible Texas residents",
+          "benefits": ["Medical care", "Emergency services", "Long-term care"],
+          "eligibility": ["Low income families", "Pregnant women", "Children", "Elderly", "Disabled"],
+          "contact": {
+            "phone": "1-800-252-8263",
+            "website": "https://hhs.texas.gov"
+          }
+        }
+      ],
+      "workforce": [
+        {
+          "id": "tx-workforce",
+          "title": "Texas Workforce Commission",
+          "category": "Employment",
+          "description": "Employment services and workforce development",
+          "benefits": ["Job search assistance", "Skills training", "Unemployment benefits"],
+          "eligibility": ["Texas residents", "Job seekers", "Displaced workers"],
+          "contact": {
+            "phone": "1-800-939-6631",
+            "website": "https://www.twc.texas.gov"
+          }
+        }
+      ],
+      "housing": [
+        {
+          "id": "tx-housing",
+          "title": "Texas Department of Housing and Community Affairs",
+          "category": "Housing",
+          "description": "Housing assistance programs for Texans",
+          "benefits": ["Rental assistance", "Homebuyer programs", "Energy assistance"],
+          "eligibility": ["Low to moderate income", "Texas residents"],
+          "contact": {
+            "phone": "1-512-475-3800",
+            "website": "https://www.tdhca.state.tx.us"
+          }
+        }
+      ]
+    },
+    "NY": {
+      "healthcare": [
+        {
+          "id": "ny-medicaid",
+          "title": "New York State Medicaid",
+          "category": "Healthcare",
+          "description": "Comprehensive healthcare coverage for eligible New Yorkers",
+          "benefits": ["Medical services", "Prescription drugs", "Mental health care", "Dental care"],
+          "eligibility": ["New York residents", "Income requirements", "Citizenship/immigration status"],
+          "contact": {
+            "phone": "1-855-355-5777",
+            "website": "https://health.ny.gov"
+          }
+        }
+      ],
+      "workforce": [
+        {
+          "id": "ny-dol",
+          "title": "New York State Department of Labor",
+          "category": "Employment",
+          "description": "Employment services and workforce development programs",
+          "benefits": ["Unemployment insurance", "Job training", "Career services"],
+          "eligibility": ["New York workers", "Job seekers"],
+          "contact": {
+            "phone": "1-888-469-7365",
+            "website": "https://dol.ny.gov"
+          }
+        }
+      ],
+      "housing": [
+        {
+          "id": "ny-housing",
+          "title": "New York State Homes and Community Renewal",
+          "category": "Housing",
+          "description": "Affordable housing programs and rental assistance",
+          "benefits": ["Public housing", "Section 8 vouchers", "First-time homebuyer programs"],
+          "eligibility": ["Low income households", "New York residents"],
+          "contact": {
+            "phone": "1-866-275-3427",
+            "website": "https://hcr.ny.gov"
+          }
+        }
+      ]
+    },
+    "FL": {
+      "healthcare": [
+        {
+          "id": "fl-medicaid",
+          "title": "Florida Medicaid",
+          "category": "Healthcare",
+          "description": "Healthcare coverage for eligible Florida residents",
+          "benefits": ["Medical services", "Hospital care", "Prescription drugs"],
+          "eligibility": ["Low income families", "Pregnant women", "Children", "Elderly", "Disabled"],
+          "contact": {
+            "phone": "1-866-762-2237",
+            "website": "https://ahca.myflorida.com"
+          }
+        }
+      ],
+      "workforce": [
+        {
+          "id": "fl-workforce",
+          "title": "CareerSource Florida",
+          "category": "Employment",
+          "description": "Workforce development and employment services",
+          "benefits": ["Job placement", "Skills training", "Career counseling"],
+          "eligibility": ["Florida residents", "Job seekers", "Employers"],
+          "contact": {
+            "phone": "1-866-352-2345",
+            "website": "https://floridajobs.org"
+          }
+        }
+      ]
+    }
+  },
+  "federalPrograms": {
+    "veterans": [
+      {
+        "id": "va-disability",
+        "title": "VA Disability Compensation",
+        "category": "Healthcare",
+        "description": "Monthly payments for veterans with service-connected disabilities",
+        "benefits": ["Monthly payments", "Healthcare coverage", "Vocational rehabilitation"],
+        "eligibility": ["Military service", "Service-connected disability", "Honorable discharge"],
+        "contact": {
+          "phone": "1-800-827-1000",
+          "website": "https://www.va.gov/disability"
+        }
+      },
+      {
+        "id": "va-home-loan",
+        "title": "VA Home Loan",
+        "category": "Housing",
+        "description": "Zero down payment home loans for eligible veterans",
+        "benefits": ["No down payment", "No PMI", "Competitive rates"],
+        "eligibility": ["Military service", "Certificate of Eligibility", "Credit requirements"],
+        "contact": {
+          "phone": "1-877-827-3702",
+          "website": "https://www.va.gov/housing-assistance"
+        }
+      }
+    ],
+    "energy": [
+      {
+        "id": "weatherization",
+        "title": "Weatherization Assistance Program",
+        "category": "Energy",
+        "description": "Free weatherization services for low-income households",
+        "benefits": ["Free insulation", "Air sealing", "Heating improvements", "Energy savings"],
+        "eligibility": ["Low income (200% of poverty level)", "Homeowner or renter with permission"],
+        "contact": {
+          "phone": "1-877-337-3463",
+          "website": "https://www.energy.gov/eere/wap"
+        }
+      },
+      {
+        "id": "liheap",
+        "title": "Low Income Home Energy Assistance",
+        "category": "Energy",
+        "description": "Help with heating and cooling costs",
+        "benefits": ["Utility bill assistance", "Energy crisis intervention", "Weatherization"],
+        "eligibility": ["Low income households", "US citizen or legal resident"],
+        "contact": {
+          "phone": "1-866-674-6327",
+          "website": "https://www.acf.hhs.gov/ocs/programs/liheap"
+        }
+      }
+    ],
+    "education": [
+      {
+        "id": "pell-grant",
+        "title": "Federal Pell Grant",
+        "category": "Education",
+        "description": "Need-based federal grant for undergraduate students",
+        "benefits": ["Up to $7,395 per year", "No repayment required", "Multiple years available"],
+        "eligibility": ["Undergraduate students", "Exceptional financial need", "US citizen or eligible non-citizen"],
+        "contact": {
+          "phone": "1-800-433-3243",
+          "website": "https://studentaid.gov/understand-aid/types/grants/pell"
+        }
+      },
+      {
+        "id": "pslf",
+        "title": "Public Service Loan Forgiveness",
+        "category": "Education",
+        "description": "Complete loan forgiveness for public service workers",
+        "benefits": ["100% loan forgiveness", "No tax liability", "All federal loan types eligible"],
+        "eligibility": ["Full-time public service", "Direct Loans", "120 qualifying payments"],
+        "contact": {
+          "phone": "1-855-265-4038",
+          "website": "https://studentaid.gov/manage-loans/forgiveness-cancellation/public-service"
+        }
+      }
+    ],
+    "agriculture": [
+      {
+        "id": "snap",
+        "title": "Supplemental Nutrition Assistance Program",
+        "category": "Food",
+        "description": "Monthly benefits to help buy nutritious food",
+        "benefits": ["Monthly food benefits", "EBT card", "Nutrition education"],
+        "eligibility": ["Low income limits", "Resource limits", "Work requirements"],
+        "contact": {
+          "phone": "1-800-221-5689",
+          "website": "https://www.fns.usda.gov/snap"
+        }
+      }
+    ],
+    "labor": [
+      {
+        "id": "unemployment",
+        "title": "Unemployment Insurance",
+        "category": "Employment",
+        "description": "Temporary financial assistance for unemployed workers",
+        "benefits": ["Weekly payments", "Job search assistance", "Training opportunities"],
+        "eligibility": ["Lost job through no fault", "Work requirements", "Available for work"],
+        "contact": {
+          "phone": "Varies by state",
+          "website": "https://www.dol.gov/general/topic/unemployment-insurance"
+        }
+      }
+    ],
+    "healthcare": [
+      {
+        "id": "medicare",
+        "title": "Medicare Health Insurance",
+        "category": "Healthcare",
+        "description": "Federal health insurance for 65+ and disabled",
+        "benefits": ["Hospital insurance", "Medical insurance", "Prescription drugs"],
+        "eligibility": ["Age 65+", "Under 65 with disabilities", "End-stage renal disease"],
+        "contact": {
+          "phone": "1-800-MEDICARE",
+          "website": "https://www.medicare.gov"
+        }
+      }
+    ],
+    "disaster": [
+      {
+        "id": "fema-assistance",
+        "title": "Individual and Household Program",
+        "category": "Emergency",
+        "description": "Financial assistance for disaster survivors",
+        "benefits": ["Temporary housing", "Home repair grants", "Property replacement"],
+        "eligibility": ["Disaster declaration", "Primary residence affected", "Uninsured losses"],
+        "contact": {
+          "phone": "1-800-621-3362",
+          "website": "https://www.fema.gov/assistance/individual"
+        }
+      }
+    ],
+    "disability": [
+      {
+        "id": "ssdi",
+        "title": "Social Security Disability Insurance",
+        "category": "Disability",
+        "description": "Monthly benefits for people who cannot work due to disability",
+        "benefits": ["Monthly payments", "Medicare after 24 months", "Dependent benefits"],
+        "eligibility": ["Severe medical condition", "Work history", "Cannot work 12+ months"],
+        "contact": {
+          "phone": "1-800-772-1213",
+          "website": "https://www.ssa.gov/benefits/disability"
+        }
+      }
+    ],
+    "tribal": [
+      {
+        "id": "tribal-services",
+        "title": "Tribal Social Services",
+        "category": "Social Services",
+        "description": "Comprehensive services for American Indian and Alaska Native communities",
+        "benefits": ["Family services", "Child welfare", "Adult services", "Community development"],
+        "eligibility": ["Tribal membership", "Service area residence", "Program requirements"],
+        "contact": {
+          "phone": "Contact tribal office",
+          "website": "https://www.bia.gov/service/tribal-social-services"
+        }
+      }
+    ]
+  }
+}

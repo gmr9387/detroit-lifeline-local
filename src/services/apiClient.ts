@@ -3,6 +3,16 @@
  * Handles CORS-enabled endpoints and client-side data fetching
  */
 
+import { 
+  fetchFromStateHealth, 
+  fetchFromStateWorkforce, 
+  fetchFromStateHousing 
+} from './stateApiHelpers';
+import { 
+  normalizeFederalAgencyData, 
+  getFallbackFederalAgencyPrograms 
+} from './federalAgencyHelpers';
+
 export interface BenefitProgram {
   id: string;
   title: string;
@@ -31,6 +41,75 @@ export interface BenefitProgram {
 class APIClient {
   private cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
   private readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+  // Comprehensive state-specific API endpoints
+  private readonly STATE_APIS = {
+    'AL': { health: 'https://medicaid.alabama.gov/api', workforce: 'https://labor.alabama.gov/api' },
+    'AK': { health: 'https://dhss.alaska.gov/api', workforce: 'https://labor.alaska.gov/api' },
+    'AZ': { health: 'https://des.az.gov/api', workforce: 'https://des.az.gov/api/workforce' },
+    'AR': { health: 'https://medicaid.arkansas.gov/api', workforce: 'https://commerce.arkansas.gov/api' },
+    'CA': { health: 'https://www.dhcs.ca.gov/api', workforce: 'https://edd.ca.gov/api', housing: 'https://hcd.ca.gov/api' },
+    'CO': { health: 'https://hcpf.colorado.gov/api', workforce: 'https://cdle.colorado.gov/api' },
+    'CT': { health: 'https://portal.ct.gov/dss/api', workforce: 'https://portal.ct.gov/dol/api' },
+    'DE': { health: 'https://dhss.delaware.gov/api', workforce: 'https://dol.delaware.gov/api' },
+    'FL': { health: 'https://ahca.myflorida.com/api', workforce: 'https://floridajobs.org/api' },
+    'GA': { health: 'https://medicaid.georgia.gov/api', workforce: 'https://dol.georgia.gov/api' },
+    'HI': { health: 'https://medquest.hawaii.gov/api', workforce: 'https://labor.hawaii.gov/api' },
+    'ID': { health: 'https://healthandwelfare.idaho.gov/api', workforce: 'https://labor.idaho.gov/api' },
+    'IL': { health: 'https://www2.illinois.gov/hfs/api', workforce: 'https://ides.illinois.gov/api' },
+    'IN': { health: 'https://www.in.gov/fssa/api', workforce: 'https://www.in.gov/dwd/api' },
+    'IA': { health: 'https://dhs.iowa.gov/api', workforce: 'https://www.iowaworkforcedevelopment.gov/api' },
+    'KS': { health: 'https://www.kancare.ks.gov/api', workforce: 'https://www.dol.ks.gov/api' },
+    'KY': { health: 'https://chfs.ky.gov/api', workforce: 'https://kcc.ky.gov/api' },
+    'LA': { health: 'https://ldh.la.gov/api', workforce: 'https://www.laworks.net/api' },
+    'ME': { health: 'https://www.maine.gov/dhhs/api', workforce: 'https://www.maine.gov/labor/api' },
+    'MD': { health: 'https://health.maryland.gov/api', workforce: 'https://www.dllr.state.md.us/api' },
+    'MA': { health: 'https://www.mass.gov/api/health', workforce: 'https://www.mass.gov/api/labor' },
+    'MI': { health: 'https://www.michigan.gov/mdhhs/api', workforce: 'https://www.michigan.gov/leo/api' },
+    'MN': { health: 'https://mn.gov/dhs/api', workforce: 'https://mn.gov/deed/api' },
+    'MS': { health: 'https://medicaid.ms.gov/api', workforce: 'https://mdes.ms.gov/api' },
+    'MO': { health: 'https://dss.mo.gov/api', workforce: 'https://jobs.mo.gov/api' },
+    'MT': { health: 'https://dphhs.mt.gov/api', workforce: 'https://dli.mt.gov/api' },
+    'NE': { health: 'https://dhhs.ne.gov/api', workforce: 'https://dol.nebraska.gov/api' },
+    'NV': { health: 'https://dhhs.nv.gov/api', workforce: 'https://detr.nv.gov/api' },
+    'NH': { health: 'https://www.dhhs.nh.gov/api', workforce: 'https://www.nhes.nh.gov/api' },
+    'NJ': { health: 'https://www.nj.gov/humanservices/api', workforce: 'https://www.nj.gov/labor/api' },
+    'NM': { health: 'https://www.hsd.state.nm.us/api', workforce: 'https://www.dws.state.nm.us/api' },
+    'NY': { health: 'https://health.ny.gov/api', workforce: 'https://dol.ny.gov/api', housing: 'https://hcr.ny.gov/api' },
+    'NC': { health: 'https://www.ncdhhs.gov/api', workforce: 'https://des.nc.gov/api' },
+    'ND': { health: 'https://www.nd.gov/dhs/api', workforce: 'https://www.jobsnd.com/api' },
+    'OH': { health: 'https://medicaid.ohio.gov/api', workforce: 'https://jfs.ohio.gov/api' },
+    'OK': { health: 'https://okhca.org/api', workforce: 'https://www.ok.gov/oesc/api' },
+    'OR': { health: 'https://www.oregon.gov/dhs/api', workforce: 'https://www.oregon.gov/employ/api' },
+    'PA': { health: 'https://www.dhs.pa.gov/api', workforce: 'https://www.dli.pa.gov/api' },
+    'RI': { health: 'https://www.eohhs.ri.gov/api', workforce: 'https://dlt.ri.gov/api' },
+    'SC': { health: 'https://scdhhs.gov/api', workforce: 'https://dew.sc.gov/api' },
+    'SD': { health: 'https://dss.sd.gov/api', workforce: 'https://dlr.sd.gov/api' },
+    'TN': { health: 'https://www.tn.gov/tenncare/api', workforce: 'https://www.tn.gov/labor/api' },
+    'TX': { health: 'https://hhs.texas.gov/api', workforce: 'https://www.twc.texas.gov/api', housing: 'https://www.tdhca.state.tx.us/api' },
+    'UT': { health: 'https://medicaid.utah.gov/api', workforce: 'https://jobs.utah.gov/api' },
+    'VT': { health: 'https://dvha.vermont.gov/api', workforce: 'https://labor.vermont.gov/api' },
+    'VA': { health: 'https://www.dmas.virginia.gov/api', workforce: 'https://www.vec.virginia.gov/api' },
+    'WA': { health: 'https://www.hca.wa.gov/api', workforce: 'https://esd.wa.gov/api', housing: 'https://www.commerce.wa.gov/api' },
+    'WV': { health: 'https://dhhr.wv.gov/api', workforce: 'https://workforcewv.org/api' },
+    'WI': { health: 'https://www.dhs.wisconsin.gov/api', workforce: 'https://dwd.wisconsin.gov/api' },
+    'WY': { health: 'https://health.wyo.gov/api', workforce: 'https://wyomingworkforce.org/api' },
+    'DC': { health: 'https://dhcf.dc.gov/api', workforce: 'https://does.dc.gov/api' }
+  };
+
+  // Federal agency APIs for comprehensive coverage
+  private readonly FEDERAL_APIS = {
+    veterans: 'https://api.va.gov/services',
+    energy: 'https://api.energy.gov/v1',
+    grants: 'https://api.grants.gov/v1',
+    agriculture: 'https://api.usda.gov/nass',
+    labor: 'https://api.bls.gov/publicAPI/v2',
+    education: 'https://api.ed.gov/data',
+    healthcare: 'https://api.cms.gov',
+    disaster: 'https://api.fema.gov/open',
+    tribal: 'https://api.bia.gov/tribal',
+    disability: 'https://api.ssa.gov/disability'
+  };
 
   private getCached<T>(key: string): T | null {
     const cached = this.cache.get(key);
@@ -157,6 +236,71 @@ class APIClient {
   }
 
   // Aggregate search across all sources
+  // Enhanced state-specific program fetcher
+  async fetchStatePrograms(state: string, category?: string): Promise<BenefitProgram[]> {
+    const cacheKey = `state-programs-${state}-${category || 'all'}`;
+    const cached = this.getCached<BenefitProgram[]>(cacheKey);
+    if (cached) return cached;
+
+    const stateApis = this.STATE_APIS[state as keyof typeof this.STATE_APIS];
+    if (!stateApis) {
+      return this.getFallbackStatePrograms(state, category);
+    }
+
+    const programs: BenefitProgram[] = [];
+
+    try {
+      // Fetch from multiple state endpoints
+      await Promise.allSettled([
+        fetchFromStateHealth(stateApis.health, state, category),
+        fetchFromStateWorkforce(stateApis.workforce, state, category),
+        (stateApis as any).housing && fetchFromStateHousing((stateApis as any).housing, state, category)
+      ]).then(results => {
+        results.forEach(result => {
+          if (result.status === 'fulfilled' && result.value) {
+            programs.push(...result.value);
+          }
+        });
+      });
+
+      this.setCache(cacheKey, programs);
+      return programs;
+    } catch (error) {
+      console.warn(`State API unavailable for ${state}, using fallback data`);
+      return this.getFallbackStatePrograms(state, category);
+    }
+  }
+
+  // Federal agencies comprehensive search
+  async fetchFederalAgencyPrograms(agency: string, category?: string): Promise<BenefitProgram[]> {
+    const cacheKey = `federal-${agency}-${category || 'all'}`;
+    const cached = this.getCached<BenefitProgram[]>(cacheKey);
+    if (cached) return cached;
+
+    const apiUrl = this.FEDERAL_APIS[agency as keyof typeof this.FEDERAL_APIS];
+    if (!apiUrl) {
+      return [];
+    }
+
+    try {
+      const response = await fetch(`${apiUrl}/programs`, {
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${agency} programs`);
+      }
+
+      const data = await response.json();
+      const programs = normalizeFederalAgencyData(data, agency, category);
+      this.setCache(cacheKey, programs);
+      return programs;
+    } catch (error) {
+      console.warn(`${agency} API unavailable, using fallback data`);
+      return getFallbackFederalAgencyPrograms(agency, category);
+    }
+  }
+
   async searchPrograms(query: string, filters: {
     state?: string;
     category?: string;
