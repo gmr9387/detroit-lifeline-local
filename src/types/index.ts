@@ -18,25 +18,23 @@ export interface ResourceCategory {
 
 export interface Program {
   id: string;
-  name: string;
+  title: string;
   category: string;
   description: string;
-  eligibility: {
-    income: string;
-    age: string;
-    residency: string;
-    [key: string]: string;
-  };
+  eligibility: string[];
   benefits: string[];
-  documents: string[];
+  requirements?: string[];
   contact: {
     phone: string;
     website: string;
-    address: string;
-    hours: string;
+    address?: string;
+    hours?: string;
+    email?: string;
   };
-  languages: string[];
-  applicationUrl: string;
+  languages?: string[];
+  applicationProcess?: string[];
+  applicationUrl?: string;
+  deadlines?: string[];
 }
 
 export interface Application {
