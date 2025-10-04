@@ -1,20 +1,70 @@
 // Central data loader for all government assistance programs
 import { Program } from '@/types';
 
-// Available state programs (only files that exist)
+// All 50 US states + DC
 const statePrograms: Record<string, () => Promise<any>> = {
   AL: () => import('./states/alabama'),
+  AK: () => import('./states/alaska'),
+  AZ: () => import('./states/arizona'),
+  AR: () => import('./states/arkansas'),
   CA: () => import('./states/california'),
+  CO: () => import('./states/colorado'),
+  CT: () => import('./states/connecticut'),
+  DE: () => import('./states/delaware'),
   FL: () => import('./states/florida'),
+  GA: () => import('./states/georgia'),
+  HI: () => import('./states/hawaii'),
+  ID: () => import('./states/idaho'),
+  IL: () => import('./states/illinois'),
+  IN: () => import('./states/indiana'),
+  IA: () => import('./states/iowa'),
+  KS: () => import('./states/kansas'),
+  KY: () => import('./states/kentucky'),
+  LA: () => import('./states/louisiana'),
+  ME: () => import('./states/maine'),
+  MD: () => import('./states/maryland'),
+  MA: () => import('./states/massachusetts'),
+  MI: () => import('./states/michigan'),
+  MN: () => import('./states/minnesota'),
+  MS: () => import('./states/mississippi'),
+  MO: () => import('./states/missouri'),
+  MT: () => import('./states/montana'),
+  NE: () => import('./states/nebraska'),
+  NV: () => import('./states/nevada'),
+  NH: () => import('./states/new-hampshire'),
+  NJ: () => import('./states/new-jersey'),
+  NM: () => import('./states/new-mexico'),
   NY: () => import('./states/new-york'),
+  NC: () => import('./states/north-carolina'),
+  ND: () => import('./states/north-dakota'),
+  OH: () => import('./states/ohio'),
+  OK: () => import('./states/oklahoma'),
+  OR: () => import('./states/oregon'),
+  PA: () => import('./states/pennsylvania'),
+  RI: () => import('./states/rhode-island'),
+  SC: () => import('./states/south-carolina'),
+  SD: () => import('./states/south-dakota'),
+  TN: () => import('./states/tennessee'),
   TX: () => import('./states/texas'),
+  UT: () => import('./states/utah'),
+  VT: () => import('./states/vermont'),
+  VA: () => import('./states/virginia'),
+  WA: () => import('./states/washington'),
+  WV: () => import('./states/west-virginia'),
+  WI: () => import('./states/wisconsin'),
+  WY: () => import('./states/wyoming'),
 };
 
-// Available federal programs (only files that exist)
+// All federal program categories
 const federalPrograms = {
   veterans: () => import('./federal/veterans'),
   healthcare: () => import('./federal/healthcare'),
   nutrition: () => import('./federal/nutrition'),
+  housing: () => import('./federal/housing'),
+  education: () => import('./federal/education'),
+  employment: () => import('./federal/employment'),
+  energy: () => import('./federal/energy'),
+  disability: () => import('./federal/disability'),
 };
 
 // Load state programs
