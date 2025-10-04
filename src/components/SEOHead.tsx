@@ -11,14 +11,14 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = 'Detroit Social Services - Find Benefits & Support Programs',
-  description = 'Find and apply for social services, benefits, and support programs in Detroit. Get personalized recommendations for housing, food, healthcare, and financial assistance.',
-  keywords = 'Detroit social services, benefits, assistance programs, food stamps, housing, healthcare, financial aid, welfare, support services',
-  canonicalUrl = 'https://detroit-services.lovable.app',
+  title = 'Lifeline Navigator - Government Assistance Programs Nationwide',
+  description = 'Find and apply for government assistance programs across all 50 states. Access healthcare, SNAP, housing, employment, education, and more. 270+ programs with personalized recommendations.',
+  keywords = 'government assistance, SNAP benefits, Medicaid, housing assistance, food stamps, unemployment, healthcare, social services, welfare programs, federal benefits, state assistance',
+  canonicalUrl = 'https://lifelinenavigator.com',
   ogImage = '/og-image.png',
   structuredData
 }) => {
-  const fullTitle = title.includes('Detroit Social Services') ? title : `${title} | Detroit Social Services`;
+  const fullTitle = title.includes('Lifeline Navigator') ? title : `${title} | Lifeline Navigator`;
 
   return (
     <Helmet>
@@ -34,7 +34,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="Detroit Social Services" />
+      <meta property="og:site_name" content="Lifeline Navigator" />
       
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
@@ -45,11 +45,39 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
-      <meta name="author" content="Detroit Social Services" />
+      <meta name="author" content="Lifeline Navigator" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Language" content="en-US" />
+      <meta name="theme-color" content="#2563eb" />
       
-      {/* Structured Data */}
+      {/* Structured Data - Organization */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Lifeline Navigator",
+          "description": "Government assistance program finder covering all 50 states",
+          "url": canonicalUrl,
+          "logo": `${canonicalUrl}/logo.png`
+        })}
+      </script>
+
+      {/* Structured Data - WebSite */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Lifeline Navigator",
+          "url": canonicalUrl,
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": `${canonicalUrl}/search?q={search_term_string}`,
+            "query-input": "required name=search_term_string"
+          }
+        })}
+      </script>
+
+      {/* Custom Structured Data */}
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

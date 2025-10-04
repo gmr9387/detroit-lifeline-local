@@ -160,28 +160,46 @@
 @layer components {
   /* Custom button variants for Detroit theme */
   .btn-hero {
-    @apply bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-smooth shadow-medium hover:shadow-strong;
+    @apply bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-smooth shadow-medium hover:shadow-strong hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-smooth;
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-smooth hover:scale-105 active:scale-95;
   }
 
   .btn-accent {
-    @apply bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3 rounded-lg font-medium transition-smooth;
+    @apply bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3 rounded-lg font-medium transition-smooth hover:scale-105 active:scale-95;
   }
 
   /* Card components */
   .card-elevated {
-    @apply bg-card border border-border rounded-xl shadow-medium hover:shadow-strong transition-smooth;
+    @apply bg-card border border-border rounded-xl shadow-medium hover:shadow-strong transition-smooth hover:-translate-y-1;
   }
 
   .card-gradient {
     @apply gradient-card border border-border rounded-xl shadow-soft;
   }
 
+  .card-interactive {
+    @apply card-elevated cursor-pointer hover:border-primary/50 active:scale-[0.98];
+  }
+
   /* Progress indicators */
   .progress-ring {
     @apply w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    @apply bg-gradient-to-r from-muted via-muted-foreground/10 to-muted bg-[length:1000px_100%] animate-shimmer;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-strong;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--primary-glow),0.3)];
   }
 }

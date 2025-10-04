@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FunnelWizard from '@/components/FunnelWizard';
 import { IntegratedDashboard } from '@/components/IntegratedDashboard';
 import ProgramDetail from '@/components/ProgramDetail';
+import SEOHead from '@/components/SEOHead';
 
 interface FunnelResponse {
   goal: string[];
@@ -138,24 +139,45 @@ const Index = () => {
   // App routing based on state
   switch (appState) {
     case 'funnel':
-      return <FunnelWizard onComplete={handleFunnelComplete} />;
+      return (
+        <>
+          <SEOHead 
+            title="Get Started - Lifeline Navigator"
+            description="Answer a few questions to find government assistance programs tailored to your needs. Access healthcare, food, housing, and employment benefits."
+          />
+          <FunnelWizard onComplete={handleFunnelComplete} />
+        </>
+      );
     
     case 'dashboard':
       return userProfile ? (
-        <IntegratedDashboard 
-          userProfile={userProfile}
-          onProgramSelect={handleProgramSelect}
-          onShowFunnel={handleShowFunnel}
-        />
+        <>
+          <SEOHead 
+            title={`Programs for ${userProfile.neighborhood} - Lifeline Navigator`}
+            description={`Personalized government assistance programs for your household of ${userProfile.householdSize} in ${userProfile.neighborhood}. Find healthcare, food, housing, and employment resources.`}
+          />
+          <IntegratedDashboard 
+            userProfile={userProfile}
+            onProgramSelect={handleProgramSelect}
+            onShowFunnel={handleShowFunnel}
+          />
+        </>
       ) : null;
     
     case 'program-detail':
       return userProfile && selectedProgram ? (
-        <ProgramDetail 
-          program={selectedProgram}
-          userProfile={userProfile}
-          onBack={handleBackToDashboard}
-        />
+        <>
+          <SEOHead 
+            title={`${selectedProgram.title} - Lifeline Navigator`}
+            description={selectedProgram.description}
+            keywords={`${selectedProgram.category}, government assistance, ${selectedProgram.title}`}
+          />
+          <ProgramDetail 
+            program={selectedProgram}
+            userProfile={userProfile}
+            onBack={handleBackToDashboard}
+          />
+        </>
       ) : null;
     
     default:

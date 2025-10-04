@@ -207,10 +207,11 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="gradient-hero relative overflow-hidden min-h-[200px]">
+      <div className="gradient-hero relative overflow-hidden min-h-[200px] animate-fade-in">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent pointer-events-none"></div>
         <div className="container mx-auto px-4 py-8 relative">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div className="text-primary-foreground flex-1 z-10 relative">
+            <div className="text-primary-foreground flex-1 z-10 relative animate-slide-in-left">
               <h1 className="text-3xl font-bold mb-2">
                 Welcome to Lifeline Navigator! 
               </h1>
@@ -218,12 +219,12 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                 {userProfile.neighborhood} • Household of {userProfile.householdSize} • Nationwide Coverage
               </p>
             </div>
-            <div className="hidden md:flex items-center justify-end flex-1 relative z-10">
-              <div className="mr-8 opacity-70 flex items-center space-x-4">
+            <div className="hidden md:flex items-center justify-end flex-1 relative z-10 animate-slide-in-right">
+              <div className="mr-8 opacity-70 flex items-center space-x-4 hover:opacity-100 transition-opacity">
                 <img 
                   src={spiritOfDetroitImage} 
                   alt="Spirit of Detroit" 
-                  className="w-20 h-16 object-cover rounded-lg shadow-lg border-2 border-white/20"
+                  className="w-20 h-16 object-cover rounded-lg shadow-lg border-2 border-white/20 hover:scale-110 transition-transform"
                 />
                 <div className="text-primary-foreground/80 text-sm">
                   <div className="font-semibold">Spirit of Detroit</div>
@@ -233,7 +234,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
               <Button 
                 variant="outline" 
                 onClick={onShowFunnel}
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all"
               >
                 Update Profile
               </Button>
@@ -241,7 +242,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
             <Button 
               variant="outline" 
               onClick={onShowFunnel}
-              className="md:hidden mt-4 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full"
+              className="md:hidden mt-4 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full hover:scale-105 transition-all"
             >
               Update Profile
             </Button>
@@ -251,22 +252,26 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
 
       <div className="container mx-auto px-4 py-8">
         {/* Quick Actions */}
-        <section className="mb-8">
+        <section className="mb-8 animate-fade-in">
           <h2 className="text-2xl font-bold mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {QUICK_ACTIONS
               .filter(action => userProfile.primaryNeeds.includes(action.category))
               .slice(0, 4)
               .map((action, index) => (
-              <Card key={index} className="card-elevated p-4 hover:shadow-strong transition-smooth cursor-pointer">
+              <Card 
+                key={index} 
+                className="card-elevated p-4 hover:shadow-strong transition-smooth cursor-pointer hover-lift"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <div className="flex items-center space-x-3 mb-2">
-                  <span className="text-2xl">{action.icon}</span>
+                  <span className="text-2xl animate-bounce-subtle">{action.icon}</span>
                   <h3 className="font-semibold">{action.title}</h3>
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">{action.description}</p>
                 <Button 
                   size="sm" 
-                  className="w-full"
+                  className="w-full hover:scale-105 transition-transform"
                   onClick={() => window.open(action.url, '_blank')}
                 >
                   Start Now
@@ -324,15 +329,19 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
         )}
 
         {/* Recommended Programs */}
-        <section className="mb-8">
+        <section className="mb-8 animate-fade-up">
           <h2 className="text-2xl font-bold mb-4">Recommended for You</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recommendedPrograms.map((program) => {
+            {recommendedPrograms.map((program, index) => {
               const applicationStatus = getApplicationStatus(program.id);
               const isFavorite = favorites.includes(program.id);
 
               return (
-                <Card key={program.id} className="card-elevated p-6 hover:shadow-strong transition-smooth">
+                <Card 
+                  key={program.id} 
+                  className="card-elevated p-6 hover:shadow-strong transition-smooth hover-lift"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center space-x-2">
                       <span className="text-lg">{getCategoryIcon(program.category)}</span>
@@ -344,9 +353,9 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                       variant="ghost"
                       size="sm"
                       onClick={() => toggleFavorite(program.id)}
-                      className={isFavorite ? 'text-accent' : 'text-muted-foreground'}
+                      className={`transition-all ${isFavorite ? 'text-accent' : 'text-muted-foreground'}`}
                     >
-                      <Star className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
+                      <Star className={`w-4 h-4 transition-all ${isFavorite ? 'fill-current scale-110' : ''}`} />
                     </Button>
                   </div>
 
@@ -357,11 +366,11 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
 
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center text-sm text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span>{program.contact.address.split(',').slice(-2).join(',')}</span>
+                      <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="line-clamp-1">{program.contact.address.split(',').slice(-2).join(',')}</span>
                     </div>
                     <div className="flex items-center text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4 mr-2" />
+                      <Clock className="w-4 h-4 mr-2 flex-shrink-0" />
                       <span>{program.contact.hours}</span>
                     </div>
                   </div>
@@ -370,7 +379,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                     <Button 
                       variant="outline" 
                       onClick={() => onProgramSelect(program)}
-                      className="flex-1"
+                      className="flex-1 hover:scale-105 transition-transform"
                     >
                       Learn More
                     </Button>
@@ -378,7 +387,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                       <Button 
                         variant="secondary"
                         onClick={() => window.open(program.contact.website, '_blank')}
-                        className="flex-1"
+                        className="flex-1 hover:scale-105 transition-transform"
                       >
                         <CheckCircle className="w-4 h-4 mr-2" />
                         Check Status
@@ -386,7 +395,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                     ) : (
                       <Button 
                         onClick={() => startApplication(program)}
-                        className="flex-1"
+                        className="flex-1 hover:scale-105 transition-transform"
                       >
                         Apply Now
                       </Button>
