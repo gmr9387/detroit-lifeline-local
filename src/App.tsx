@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Auth from "./pages/Auth";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { SecurityCenter } from "./components/SecurityCenter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -27,6 +28,7 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/security" element={<SecurityCenter />} />

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FunnelWizard from '@/components/FunnelWizard';
 import { IntegratedDashboard } from '@/components/IntegratedDashboard';
 import ProgramDetail from '@/components/ProgramDetail';
 import SEOHead from '@/components/SEOHead';
-
+import { useAuth } from '@/hooks/useAuth';
+import { useProfile } from '@/hooks/useProfile';
+import { Button } from '@/components/ui/button';
+import { LogOut } from 'lucide-react';
 interface FunnelResponse {
   goal: string[];
   hardship: string;
@@ -16,108 +20,42 @@ interface FunnelResponse {
   income: string;
 }
 
-// Legacy interface for backward compatibility
-interface UserProfile {
-  householdSize: number;
-  householdType: string;
-  incomeLevel: string;
-  zipCode: string;
-  neighborhood: string;
-  primaryNeeds: string[];
-  language: string;
-  hasChildren: boolean;
-  isVeteran: boolean;
-  hasDisability: boolean;
-  isStudent: boolean;
-}
-
-interface Program {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  benefits: string[];
-  eligibility: Record<string, any>;
-  requirements: string[];
-  contact: {
-    phone: string;
-    website: string;
-    address: string;
-    hours: string;
-  };
-  applicationProcess: string[];
-  languages: string[];
-  deadlines?: string[];
-}
-
 type AppState = 'funnel' | 'dashboard' | 'program-detail';
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { user, isLoading: authLoading, signOut } = useAuth();
+  const { profile, isLoading: profileLoading, updateProfile } = useProfile();
   const [appState, setAppState] = useState<AppState>('funnel');
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [funnelData, setFunnelData] = useState<FunnelResponse | null>(null);
-  const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
-  
-  console.log('Current appState:', appState);
-  console.log('UserProfile:', userProfile);
-  console.log('FunnelData:', funnelData);
+  const [selectedProgram, setSelectedProgram] = useState<any>(null);
 
   useEffect(() => {
-    // Check if user has completed funnel or legacy onboarding
-    const savedFunnel = localStorage.getItem('funnelResponses');
-    const savedProfile = localStorage.getItem('userProfile');
-    
-    if (savedFunnel) {
-      const funnelResponses = JSON.parse(savedFunnel);
-      setFunnelData(funnelResponses);
-      setUserProfile(convertFunnelToProfile(funnelResponses));
-      setAppState('dashboard');
-    } else if (savedProfile) {
-      setUserProfile(JSON.parse(savedProfile));
+    if (!authLoading && !user) {
+      navigate('/auth');
+    }
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
+    if (profile && profile.state) {
       setAppState('dashboard');
     }
-  }, []);
+  }, [profile]);
 
-  // Convert funnel responses to legacy UserProfile format for compatibility
-  const convertFunnelToProfile = (funnel: FunnelResponse): UserProfile => {
-    const primaryNeeds = funnel.goal.map(goal => {
-      switch (goal) {
-        case 'Housing / Rent / Mortgage help': return 'housing';
-        case 'Food & Nutrition': return 'food';
-        case 'Healthcare / Insurance': return 'healthcare';
-        case 'Childcare & Family Support': return 'childcare';
-        case 'Jobs / Training / Certification': return 'employment';
-        case 'Small Business / Grants / Loans': return 'entrepreneurship';
-        case 'Taxes / Credits / Rebates': return 'financial';
-        case 'Education / Student Loans': return 'education';
-        default: return 'financial';
-      }
+  const handleFunnelComplete = async (responses: FunnelResponse) => {
+    if (!user) return;
+
+    // Update profile with funnel data
+    await updateProfile({
+      state: responses.state,
+      household_size: responses.dependents + 1,
+      income_level: responses.income,
+      audience_tier: responses.roles.includes('Veteran') ? 'veteran' : 'general',
     });
 
-    return {
-      householdSize: funnel.dependents + 1,
-      householdType: funnel.household.toLowerCase().replace(' ', '-'),
-      incomeLevel: funnel.income,
-      zipCode: '', // Will be determined by state
-      neighborhood: funnel.state,
-      primaryNeeds,
-      language: 'english',
-      hasChildren: funnel.household.includes('kids') || funnel.dependents > 0,
-      isVeteran: funnel.roles.includes('Veteran'),
-      hasDisability: funnel.roles.includes('Disabled'),
-      isStudent: funnel.roles.includes('Student')
-    };
-  };
-
-  const handleFunnelComplete = (responses: FunnelResponse) => {
-    setFunnelData(responses);
-    const profile = convertFunnelToProfile(responses);
-    setUserProfile(profile);
-    localStorage.setItem('userProfile', JSON.stringify(profile));
     setAppState('dashboard');
   };
 
-  const handleProgramSelect = (program: Program) => {
+  const handleProgramSelect = (program: any) => {
     setSelectedProgram(program);
     setAppState('program-detail');
   };
@@ -128,13 +66,23 @@ const Index = () => {
   };
 
   const handleShowFunnel = () => {
-    // Clear saved data and restart funnel
-    localStorage.removeItem('funnelResponses');
-    localStorage.removeItem('userProfile');
-    setFunnelData(null);
-    setUserProfile(null);
     setAppState('funnel');
   };
+
+  if (authLoading || profileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-subtle">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
 
   // App routing based on state
   switch (appState) {
@@ -142,39 +90,83 @@ const Index = () => {
       return (
         <>
           <SEOHead 
-            title="Get Started - Lifeline Navigator"
+            title="Get Started - Detroit Lifeline"
             description="Answer a few questions to find government assistance programs tailored to your needs. Access healthcare, food, housing, and employment benefits."
           />
+          <div className="fixed top-4 right-4 z-50">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={signOut}
+              className="gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
+          </div>
           <FunnelWizard onComplete={handleFunnelComplete} />
         </>
       );
     
     case 'dashboard':
-      return userProfile ? (
+      return (
         <>
           <SEOHead 
-            title={`Programs for ${userProfile.neighborhood} - Lifeline Navigator`}
-            description={`Personalized government assistance programs for your household of ${userProfile.householdSize} in ${userProfile.neighborhood}. Find healthcare, food, housing, and employment resources.`}
+            title={`Programs for ${profile?.state || 'You'} - Detroit Lifeline`}
+            description={`Personalized government assistance programs for your household. Find healthcare, food, housing, and employment resources.`}
           />
+          <div className="fixed top-4 right-4 z-50">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={signOut}
+              className="gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
+          </div>
           <IntegratedDashboard 
-            userProfile={userProfile}
+            userProfile={profile}
             onProgramSelect={handleProgramSelect}
             onShowFunnel={handleShowFunnel}
           />
         </>
-      ) : null;
+      );
     
     case 'program-detail':
-      return userProfile && selectedProgram ? (
+      return selectedProgram ? (
         <>
           <SEOHead 
-            title={`${selectedProgram.title} - Lifeline Navigator`}
+            title={`${selectedProgram.title} - Detroit Lifeline`}
             description={selectedProgram.description}
-            keywords={`${selectedProgram.category}, government assistance, ${selectedProgram.title}`}
           />
+          <div className="fixed top-4 right-4 z-50">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={signOut}
+              className="gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
+          </div>
           <ProgramDetail 
             program={selectedProgram}
-            userProfile={userProfile}
+            userProfile={{
+              householdSize: profile?.household_size || 1,
+              householdType: 'general',
+              incomeLevel: profile?.income_level || 'low',
+              zipCode: profile?.zip_code || '',
+              neighborhood: profile?.state || '',
+              primaryNeeds: [],
+              language: 'english',
+              hasChildren: false,
+              isVeteran: profile?.audience_tier === 'veteran',
+              hasDisability: false,
+              isStudent: false,
+            }}
             onBack={handleBackToDashboard}
           />
         </>

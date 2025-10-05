@@ -14,16 +14,257 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          applied_date: string | null
+          created_at: string
+          deadline_date: string | null
+          documents: Json | null
+          id: string
+          notes: string | null
+          priority: Database["public"]["Enums"]["priority_level"] | null
+          program_id: string
+          status: Database["public"]["Enums"]["application_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          applied_date?: string | null
+          created_at?: string
+          deadline_date?: string | null
+          documents?: Json | null
+          id?: string
+          notes?: string | null
+          priority?: Database["public"]["Enums"]["priority_level"] | null
+          program_id: string
+          status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          applied_date?: string | null
+          created_at?: string
+          deadline_date?: string | null
+          documents?: Json | null
+          id?: string
+          notes?: string | null
+          priority?: Database["public"]["Enums"]["priority_level"] | null
+          program_id?: string
+          status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          program_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          program_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          program_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notifications: {
+        Row: {
+          created_at: string
+          id: string
+          is_read: boolean | null
+          link: string | null
+          message: string
+          title: string
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          link?: string | null
+          message: string
+          title: string
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          link?: string | null
+          message?: string
+          title?: string
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          audience_tier: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          household_size: number | null
+          id: string
+          income_level: string | null
+          phone: string | null
+          state: string | null
+          updated_at: string
+          zip_code: string | null
+        }
+        Insert: {
+          audience_tier?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          household_size?: number | null
+          id: string
+          income_level?: string | null
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          zip_code?: string | null
+        }
+        Update: {
+          audience_tier?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          household_size?: number | null
+          id?: string
+          income_level?: string | null
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          zip_code?: string | null
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          application_url: string | null
+          audience_tier: string | null
+          benefits: string[]
+          category: string
+          contact_phone: string | null
+          contact_website: string | null
+          created_at: string
+          description: string
+          eligibility: string[]
+          id: string
+          is_active: boolean | null
+          state: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          application_url?: string | null
+          audience_tier?: string | null
+          benefits?: string[]
+          category: string
+          contact_phone?: string | null
+          contact_website?: string | null
+          created_at?: string
+          description: string
+          eligibility?: string[]
+          id: string
+          is_active?: boolean | null
+          state?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          application_url?: string | null
+          audience_tier?: string | null
+          benefits?: string[]
+          category?: string
+          contact_phone?: string | null
+          contact_website?: string | null
+          created_at?: string
+          description?: string
+          eligibility?: string[]
+          id?: string
+          is_active?: boolean | null
+          state?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      application_status:
+        | "draft"
+        | "submitted"
+        | "pending"
+        | "approved"
+        | "denied"
+      priority_level: "low" | "medium" | "high" | "urgent"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +391,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      application_status: [
+        "draft",
+        "submitted",
+        "pending",
+        "approved",
+        "denied",
+      ],
+      priority_level: ["low", "medium", "high", "urgent"],
+    },
   },
 } as const
