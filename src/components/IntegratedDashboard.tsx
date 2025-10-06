@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Dashboard from './Dashboard';
 import { NotificationCenter } from './NotificationCenter';
 import { EmergencyHotlines } from './EmergencyHotlines';
 import { Button } from './ui/button';
-import { Bell, Phone, Settings } from 'lucide-react';
-import { apiClient } from '@/services/apiClient';
-import { offlineManager } from '@/services/offlineManager';
+import { Phone } from 'lucide-react';
 
 interface IntegratedDashboardProps {
   userProfile: any;
@@ -18,23 +16,7 @@ export const IntegratedDashboard: React.FC<IntegratedDashboardProps> = ({
   onProgramSelect,
   onShowFunnel,
 }) => {
-  const [showNotifications, setShowNotifications] = useState(false);
   const [showEmergency, setShowEmergency] = useState(false);
-
-  useEffect(() => {
-    // Initialize offline manager and API client
-    offlineManager.initialize().catch(console.error);
-    
-    // Pre-load some essential data
-    if (userProfile?.state) {
-      apiClient.searchPrograms('', {
-        state: userProfile.state,
-        audienceTier: userProfile.audienceTier,
-      }).then(programs => {
-        offlineManager.cachePrograms(programs);
-      }).catch(console.error);
-    }
-  }, [userProfile]);
 
   return (
     <div className="relative">

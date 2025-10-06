@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Auth from "./pages/Auth";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { SecurityCenter } from "./components/SecurityCenter";
+import { ApplicationManagement } from "./components/ApplicationManagement";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { OfflineIndicator } from "./components/OfflineIndicator";
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/applications" element={<ApplicationManagement />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/security" element={<SecurityCenter />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FunnelWizard from '@/components/FunnelWizard';
 import { IntegratedDashboard } from '@/components/IntegratedDashboard';
-import ProgramDetail from '@/components/ProgramDetail';
+import { ProgramDetailWrapper } from '@/components/ProgramDetailWrapper';
 import SEOHead from '@/components/SEOHead';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
@@ -27,7 +27,7 @@ const Index = () => {
   const { user, isLoading: authLoading, signOut } = useAuth();
   const { profile, isLoading: profileLoading, updateProfile } = useProfile();
   const [appState, setAppState] = useState<AppState>('funnel');
-  const [selectedProgram, setSelectedProgram] = useState<any>(null);
+  const [selectedProgramId, setSelectedProgramId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -56,12 +56,12 @@ const Index = () => {
   };
 
   const handleProgramSelect = (program: any) => {
-    setSelectedProgram(program);
+    setSelectedProgramId(program.id);
     setAppState('program-detail');
   };
 
   const handleBackToDashboard = () => {
-    setSelectedProgram(null);
+    setSelectedProgramId(null);
     setAppState('dashboard');
   };
 
@@ -135,11 +135,11 @@ const Index = () => {
       );
     
     case 'program-detail':
-      return selectedProgram ? (
+      return selectedProgramId ? (
         <>
           <SEOHead 
-            title={`${selectedProgram.title} - Detroit Lifeline`}
-            description={selectedProgram.description}
+            title="Program Details - Detroit Lifeline"
+            description="View program details and apply"
           />
           <div className="fixed top-4 right-4 z-50">
             <Button
@@ -152,8 +152,8 @@ const Index = () => {
               Sign Out
             </Button>
           </div>
-          <ProgramDetail 
-            program={selectedProgram}
+          <ProgramDetailWrapper 
+            programId={selectedProgramId}
             userProfile={{
               householdSize: profile?.household_size || 1,
               householdType: 'general',

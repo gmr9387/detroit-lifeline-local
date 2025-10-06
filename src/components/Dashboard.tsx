@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Search, Filter, Star, MapPin, Clock, Users, AlertCircle, CheckCircle, ExternalLink } from 'lucide-react';
+import { Search, Star, MapPin, Clock, CheckCircle, ExternalLink, AlertCircle, Users } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import programsData from '@/data/programs.json';
 import spiritOfDetroitImage from '@/assets/spirit-of-detroit.jpg';
+import { usePrograms } from '@/hooks/usePrograms';
+import { useApplications } from '@/hooks/useApplications';
+import { useFavorites } from '@/hooks/useFavorites';
+import LoadingSpinner from './LoadingSpinner';
 
 
 interface UserProfile {
@@ -20,26 +23,12 @@ interface UserProfile {
   isVeteran: boolean;
   hasDisability: boolean;
   isStudent: boolean;
+  state?: string;
+  audienceTier?: string;
 }
 
-interface Program {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  benefits: string[];
-  eligibility: Record<string, any>;
-  requirements: string[];
-  contact: {
-    phone: string;
-    website: string;
-    address: string;
-    hours: string;
-  };
-  applicationProcess: string[];
-  languages: string[];
-  deadlines?: string[];
-}
+// Legacy Program interface removed - using the one from usePrograms hook
+import { Program } from '@/hooks/usePrograms';
 
 interface DashboardProps {
   userProfile: UserProfile;
@@ -87,36 +76,31 @@ const QUICK_ACTIONS = [
 ];
 
 const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onShowFunnel }) => {
-  const [programs] = useState<Program[]>(programsData as Program[]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [applications, setApplications] = useState<Application[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Load saved applications and favorites from localStorage
-    const savedApplications = localStorage.getItem('applications');
-    const savedFavorites = localStorage.getItem('favorites');
-    
-    if (savedApplications) {
-      setApplications(JSON.parse(savedApplications));
-    }
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
-  }, []);
+  
+  const { programs, isLoading: programsLoading } = usePrograms({
+    category: selectedCategory,
+    state: userProfile.state,
+    audienceTier: userProfile.audienceTier,
+    searchTerm,
+  });
+  
+  const { applications, createApplication, getApplicationByProgramId } = useApplications();
+  const { favorites, addFavorite, removeFavorite, isFavorite } = useFavorites();
 
   const getRecommendedPrograms = () => {
     return programs.filter(program => {
       // Match user's primary needs
-      if (!userProfile.primaryNeeds.includes(program.category)) {
+      if (userProfile.primaryNeeds && !userProfile.primaryNeeds.some((need: string) => 
+        program.category.toLowerCase().includes(need.toLowerCase())
+      )) {
         return false;
       }
 
-      // Basic language compatibility
-      const userLang = userProfile.language === 'spanish' ? 'Spanish' : 
-                      userProfile.language === 'arabic' ? 'Arabic' : 'English';
-      if (!program.languages.includes(userLang)) {
+      // Match audience tier
+      if (program.audience_tier && userProfile.audienceTier && 
+          program.audience_tier !== userProfile.audienceTier) {
         return false;
       }
 
@@ -124,54 +108,19 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
     }).slice(0, 6);
   };
 
-  const getFilteredPrograms = () => {
-    return programs.filter(program => {
-      // Search filter
-      if (searchTerm) {
-        const searchLower = searchTerm.toLowerCase();
-        if (!program.title.toLowerCase().includes(searchLower) &&
-            !program.description.toLowerCase().includes(searchLower) &&
-            !program.benefits.some(benefit => benefit.toLowerCase().includes(searchLower))) {
-          return false;
-        }
-      }
-
-      // Category filter
-      if (selectedCategory !== 'all' && program.category !== selectedCategory) {
-        return false;
-      }
-
-      return true;
-    });
-  };
-
-  const getApplicationStatus = (programId: string) => {
-    return applications.find(app => app.programId === programId);
-  };
-
-  const startApplication = (program: Program) => {
-    const newApplication: Application = {
-      programId: program.id,
-      status: 'started',
-      dateStarted: new Date().toISOString(),
-      lastUpdated: new Date().toISOString()
-    };
-
-    const updatedApplications = [...applications, newApplication];
-    setApplications(updatedApplications);
-    localStorage.setItem('applications', JSON.stringify(updatedApplications));
-
-    // Open program's actual website
-    window.open(program.contact.website, '_blank');
+  const startApplication = async (program: any) => {
+    const app = await createApplication(program.id);
+    if (app && program.contact_website) {
+      window.open(program.contact_website, '_blank');
+    }
   };
 
   const toggleFavorite = (programId: string) => {
-    const updatedFavorites = favorites.includes(programId)
-      ? favorites.filter(id => id !== programId)
-      : [...favorites, programId];
-    
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    if (isFavorite(programId)) {
+      removeFavorite(programId);
+    } else {
+      addFavorite(programId);
+    }
   };
 
   const getCategoryIcon = (category: string) => {
@@ -201,8 +150,11 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
   };
 
   const recommendedPrograms = getRecommendedPrograms();
-  const filteredPrograms = getFilteredPrograms();
   const categories = [...new Set(programs.map(p => p.category))];
+
+  if (programsLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -287,12 +239,12 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">My Applications</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {applications.slice(0, 3).map((application) => {
-                const program = programs.find(p => p.id === application.programId);
+            {applications.slice(0, 3).map((application) => {
+                const program = programs.find(p => p.id === application.program_id);
                 if (!program) return null;
 
                 return (
-                  <Card key={application.programId} className="card-elevated p-4">
+                  <Card key={application.id} className="card-elevated p-4">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center space-x-2">
                         <span className="text-lg">{getCategoryIcon(program.category)}</span>
@@ -301,7 +253,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                       {getStatusBadge(application.status)}
                     </div>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Started: {new Date(application.dateStarted).toLocaleDateString()}
+                      Started: {new Date(application.created_at).toLocaleDateString()}
                     </p>
                     <div className="flex space-x-2">
                       <Button 
@@ -314,7 +266,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                       </Button>
                       <Button 
                         size="sm"
-                        onClick={() => window.open(program.contact.website, '_blank')}
+                        onClick={() => window.open(program.contact_website || '#', '_blank')}
                         className="flex-1"
                       >
                         Check Status
@@ -333,8 +285,8 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
           <h2 className="text-2xl font-bold mb-4">Recommended for You</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recommendedPrograms.map((program, index) => {
-              const applicationStatus = getApplicationStatus(program.id);
-              const isFavorite = favorites.includes(program.id);
+              const applicationStatus = getApplicationByProgramId(program.id);
+              const isProgramFavorite = isFavorite(program.id);
 
               return (
                 <Card 
@@ -353,9 +305,9 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                       variant="ghost"
                       size="sm"
                       onClick={() => toggleFavorite(program.id)}
-                      className={`transition-all ${isFavorite ? 'text-accent' : 'text-muted-foreground'}`}
+                      className={`transition-all ${isProgramFavorite ? 'text-accent' : 'text-muted-foreground'}`}
                     >
-                      <Star className={`w-4 h-4 transition-all ${isFavorite ? 'fill-current scale-110' : ''}`} />
+                      <Star className={`w-4 h-4 transition-all ${isProgramFavorite ? 'fill-current scale-110' : ''}`} />
                     </Button>
                   </div>
 
@@ -365,13 +317,15 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                   </p>
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
-                      <span className="line-clamp-1">{program.contact.address.split(',').slice(-2).join(',')}</span>
-                    </div>
+                    {program.contact_phone && (
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="line-clamp-1">{program.state || 'Federal'}</span>
+                      </div>
+                    )}
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Clock className="w-4 h-4 mr-2 flex-shrink-0" />
-                      <span>{program.contact.hours}</span>
+                      <span>Contact for hours</span>
                     </div>
                   </div>
 
@@ -386,7 +340,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                     {applicationStatus ? (
                       <Button 
                         variant="secondary"
-                        onClick={() => window.open(program.contact.website, '_blank')}
+                        onClick={() => window.open(program.contact_website || '#', '_blank')}
                         className="flex-1 hover:scale-105 transition-transform"
                       >
                         <CheckCircle className="w-4 h-4 mr-2" />
@@ -437,9 +391,9 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPrograms.map((program) => {
-              const applicationStatus = getApplicationStatus(program.id);
-              const isFavorite = favorites.includes(program.id);
+            {programs.map((program) => {
+              const applicationStatus = getApplicationByProgramId(program.id);
+              const isProgramFavorite = isFavorite(program.id);
 
               return (
                 <Card key={program.id} className="card-elevated p-6 hover:shadow-strong transition-smooth">
@@ -465,17 +419,6 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
                     {program.description}
                   </p>
 
-                  <div className="flex items-center text-sm text-muted-foreground mb-4">
-                    <Users className="w-4 h-4 mr-2" />
-                    <span>Languages: {program.languages.join(', ')}</span>
-                  </div>
-
-                  {program.deadlines && (
-                    <div className="flex items-center text-sm text-warning mb-4 p-2 bg-warning/10 rounded">
-                      <AlertCircle className="w-4 h-4 mr-2" />
-                      <span className="text-xs">{program.deadlines[0]}</span>
-                    </div>
-                  )}
 
                   <div className="flex space-x-2">
                     <Button 
@@ -501,7 +444,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, onProgramSelect, onS
             })}
           </div>
 
-          {filteredPrograms.length === 0 && (
+          {programs.length === 0 && !programsLoading && (
             <div className="text-center py-12">
               <AlertCircle className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">No programs found</h3>
